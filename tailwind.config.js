@@ -21,37 +21,59 @@ module.exports = {
       "4xl": "1900px",
     },
     fontFamily: {
-      sans: [
-        'Open Sans',
-        'sans-serif',
-      ],
-      serif: [
-        'Georgia',
-        'Cambria',
-        '"Times New Roman"',
-        'Times',
-        'serif',
-      ],
+      sans: ["AribauGrotesk, '-apple-system', 'BlinkMacSystemFont', sans-serif"],
+      display: ["Mont, '-apple-system', 'BlinkMacSystemFont', sans-serif"],
+    },
+    fontSize: {
+      'xs': '16px',
+      'sm': '18px',
+      'base': '20px',
+      'lg': '24px',
+      'xl': '34px',
+      '2xl': '74px',
+      '3xl': '80px',
     },
     filter: {
       none: "none",
       grayscale: "grayscale(1)",
     },
     extend: {
+      width: {
+        "1/16": "6.25%",
+        "2/16": "12.5%",
+        "3/16": "18.75%",
+        "5/16": "31.25%",
+        "6/16": "37.5%",
+        "7/16": "43.75%",
+        "9/16": "56.25%",
+        "10/16": "62.5%",
+        "11/16": "68.75%",
+        "13/16": "81.25%",
+        "14/16": "87.5%",
+        "15/16": "93.75%",
+      },
       colors: {
         primary: {
-          light: "#eee",
-          DEFAULT: "#ccc",
-          dark: "#666",
+          DEFAULT: "#FF6B4A",
         },
         secondary: {
-          light: "#f83",
-          DEFAULT: "#d0dfe5",
-          dark: "#c0ced3",
+          light: "#ABE8E8",
+          DEFAULT: "#3B5CC4",
+          dark: "#12284C",
         },
+        positive: {
+          DEFAULT: "#81D76C",
+          dark: "#205114",
+        },
+        negative: {
+          DEFAULT: "#F84747",
+          dark: "#B11A1A",
+        }
       },
       spacing: {
+        68: "15.35rem",
         72: "18rem",
+        83: "20.81rem",
         84: "21rem",
         96: "24rem",
         128: "32rem",
@@ -59,6 +81,9 @@ module.exports = {
       zIndex: {
         "-10": "-10",
         "-20": "-20",
+      },
+      borderRadius: {
+        '4xl': '2rem',
       },
       inset: (theme, { negative }) => ({
         full: "100%",
@@ -75,6 +100,7 @@ module.exports = {
         25: "25vh",
         50: "50vh",
         75: "75vh",
+        90: "90vh",
       }),
     },
   },

@@ -1,13 +1,14 @@
-/* Tailwind base/components */
-@tailwind base;
-@tailwind components;
-
 /* Default Typography Styles */
+@import '_fonts.css';
+
 /* @import '_typography.css'; */
 
-/* Tailwind Utilities */
-@tailwind utilities;
+/* Tailwind base/components */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
 
+/* Tailwind Utilities */
+@import 'tailwindcss/utilities';
 
 /* Custom */
 html {
@@ -36,4 +37,32 @@ a:hover {
 img {
   max-width: 100%;
   display: block;
+}
+
+.hosting-options {
+  li {
+    @apply flex flex-col items-center justify-center h-20 p-4 text-center border-b border-gray-100;
+
+    &:nth-of-type(even) {
+      @apply relative bg-gray-100;
+    }
+
+    &:last-of-type {
+      @apply border-0;
+    }
+  }
+}
+
+.hosting-options .option-list li {
+  @apply items-end pr-6;
+
+  &:nth-of-type(even):before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100 */
+    background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+  }
 }
