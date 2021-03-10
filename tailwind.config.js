@@ -4,6 +4,8 @@ module.exports = {
       options: {
         safelist: [
             /^wp/,
+            'bg-positive',
+            'bg-negative',
         ],
     },
   },
