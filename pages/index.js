@@ -117,19 +117,19 @@ export default function Home({ data: {home, site, hostingOptions} }) {
                       )}
 
                       <ul className={(i == 0) ? "shadow-xl rounded-3xl" : ""}>
-                        <li>{(option.freeSslCertificate) ? <IconThumb outcome="positive" /> : <IconThumb outcome="negative" /> }</li>
+                        <li>{(option.freeSslCertificate) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</li>
                         <li>{option.backups}</li>
                         <li>{option.uptime}</li>
-                        <li>{(option.unlimitedVisitors) ? <IconThumb outcome="positive" /> : <IconThumb outcome="negative" />}</li>
-                        <li>{(option.dedicatedHighAvailabilityArchitecture) ? <IconThumb outcome="positive" /> : <IconThumb outcome="negative" />}</li>
-                        <li>{(option.protectedNameservers) ? <IconThumb outcome="positive" /> : <IconThumb outcome="negative" />}</li>
-                        <li>{(option.dedicatedDdosProtection) ? <IconThumb outcome="positive" /> : <IconThumb outcome="negative" />}</li>
-                        <li>{(option.recommendedForEcommerce) ? <IconThumb outcome="positive" /> : <IconThumb outcome="negative" />}</li>
-                        <li>{(option.clickfraudPpcProtection) ? <IconThumb outcome="positive" /> : <IconThumb outcome="negative" />}</li>
-                        <li>{(option.reactiveServerMonitoring) ? <IconThumb outcome="positive" /> : <IconThumb outcome="negative" />}</li>
-                        <li>{(option.regularSecurityPatching) ? <IconThumb outcome="positive" /> : <IconThumb outcome="negative" />}</li>
-                        <li>{(option.threatProtection) ? <IconThumb outcome="positive" /> : <IconThumb outcome="negative" />}</li>
-                        <li>{(option.http2EnabledServers) ? <IconThumb outcome="positive" /> : <IconThumb outcome="negative" />}</li>
+                        <li>{(option.unlimitedVisitors) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
+                        <li>{(option.dedicatedHighAvailabilityArchitecture) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
+                        <li>{(option.protectedNameservers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
+                        <li>{(option.dedicatedDdosProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
+                        <li>{(option.recommendedForEcommerce) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
+                        <li>{(option.clickfraudPpcProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
+                        <li>{(option.reactiveServerMonitoring) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
+                        <li>{(option.regularSecurityPatching) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
+                        <li>{(option.threatProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
+                        <li>{(option.http2EnabledServers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
                       </ul>
                       
                     </div>
