@@ -201,8 +201,8 @@ export default function Home({ data: {home, site, hostingOptions} }) {
                         variants={listVariants}
                       >
                         <motion.li variants={itemVariants}>{(option.freeSslCertificate) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                        <motion.li variants={itemVariants} class="font-semibold font-display text-base">{option.backups}</motion.li>
-                        <motion.li variants={itemVariants} class="font-semibold font-display text-base">{option.uptime}</motion.li>
+                        <motion.li variants={itemVariants} class="font-semibold font-display lg:text-base">{option.backups}</motion.li>
+                        <motion.li variants={itemVariants} class="font-semibold font-display lg:text-base">{option.uptime}</motion.li>
                         <motion.li variants={itemVariants}>{(option.unlimitedVisitors) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
                         <motion.li variants={itemVariants}>{(option.dedicatedHighAvailabilityArchitecture) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
                         <motion.li variants={itemVariants}>{(option.protectedNameservers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
