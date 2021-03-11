@@ -7,7 +7,7 @@ import Footer from '../components/footer'
 import Container from '../components/container'
 import IconThumb from '../components/iconThumb'
 import FancyLink from '../components/fancyLink'
-import { motion, MotionConfig } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Image, renderMetaTags } from "react-datocms";
 
 export default function Home({ data: {home, site, hostingOptions} }) {
@@ -21,7 +21,7 @@ export default function Home({ data: {home, site, hostingOptions} }) {
     'Protected Nameservers',
     'Dedictaed DDOS Protection',
     'Recommended for Ecommerce',
-    'Clickfraud PPC protection',
+    'Clickfraud PPC Protection',
     'Reactive Server Monitoring',
     'Regular Security Patching',
     '24/7 Threat Protection',
