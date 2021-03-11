@@ -7,7 +7,7 @@ import Footer from '../components/footer'
 import Container from '../components/container'
 import IconThumb from '../components/iconThumb'
 import FancyLink from '../components/fancyLink'
-import { motion } from 'framer-motion'
+import { motion, MotionConfig } from 'framer-motion'
 import { Image, renderMetaTags } from "react-datocms";
 
 export default function Home({ data: {home, site, hostingOptions} }) {
@@ -17,7 +17,7 @@ export default function Home({ data: {home, site, hostingOptions} }) {
     'Backups',
     'Uptime',
     'Unlimited Visitors',
-    'Dedicated High Availabiliy Architecture',
+    'Dedicated High Availability Architecture',
     'Protected Nameservers',
     'Dedictaed DDOS Protection',
     'Recommended for Ecommerce',
@@ -27,6 +27,38 @@ export default function Home({ data: {home, site, hostingOptions} }) {
     '24/7 Threat Protection',
     'HTTP/2 Enabled Servers',
   ];
+
+  const heroImageVariants = {
+    hidden: { left: -200, opacity: 0 },
+    visible: { left: 0, opacity: .1},
+  }
+
+  const logoVariants = {
+    hidden: { y: -10, opacity: 0 },
+    visible: { y: 0, opacity: 1 },
+  }
+
+  const hostingVariants = {
+    hidden: { y: -100, opacity: 0 },
+    visible: {y: 0, opacity: 1},
+  }
+
+  const listVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 3,
+        delayChildren: 3,
+        staggerChildren: 0.25
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y:0 }
+  }
 
   return (
 
@@ -38,19 +70,46 @@ export default function Home({ data: {home, site, hostingOptions} }) {
 
         <header className="relative p-8 pb-64 overflow-hidden lg:py-12 lg:pb-116 lg:min-h-90 bg-secondary-dark">
               
-            <div className="absolute top-0 left-0 z-0 w-full h-full overflow-hidden opacity-10 gradient-fade lg:w-3/5">
+            <motion.div
+              key="heroImage"
+              initial="hidden"
+              animate="visible"
+              variants={heroImageVariants}
+              transition={{duration: 1}}
+              className="absolute top-0 left-0 z-0 w-full h-full overflow-hidden opacity-10 gradient-fade lg:w-3/5">
                 <Image width={900} height={750} pictureClassName="h-full object-center object-cover" className="absolute bottom-0 left-0 h-full" data={home.heroImage.responsiveImage} /> 
-            </div>
+            </motion.div>
             
-            <Container>
-                <img className="mx-auto lg:m-0" src="images/adtrak-logo.svg" width={160} height={35} alt="Adtrak Media Limited" /> 
-            </Container>   
+            <motion.div
+              key="logo"
+              initial="hidden"
+              animate="visible"
+              variants={logoVariants}
+              transition={{duration: .5}}
+            >
+              <Container>
+                  <img className="mx-auto lg:m-0" src="images/adtrak-logo.svg" width={160} height={35} alt="Adtrak Media Limited" /> 
+              </Container>   
+            </motion.div>
             
             <div className="relative z-20 w-full max-w-md mx-auto mt-8 text-center text-white lg:mt-24">
 
-              <h1 className="mb-2 text-lg font-semibold font-display xs:text-xl lg:text-2xl text-secondary-light" role="heading" aria-level="1">{home.heroTitle}</h1>
+              <motion.h1 
+                key="heroMsg"
+                initial="hidden"
+                animate="visible"
+                variants={logoVariants}
+                transition={{duration: .5, delay: 1}}
+                className="mb-2 text-lg font-semibold font-display xs:text-xl lg:text-2xl text-secondary-light" role="heading" aria-level="1">{home.heroTitle}</motion.h1>
 
-              <div className="font-sans font-light lg:text-lg content" dangerouslySetInnerHTML={{ __html: home.heroBlurb }} />
+              <motion.div 
+                key="heroBlurb"
+                initial="hidden"
+                animate="visible"
+                variants={logoVariants}
+                transition={{duration: .5, delay: 1.5}}
+                className="font-sans font-light lg:text-lg content"
+                dangerouslySetInnerHTML={{ __html: home.heroBlurb }} />
               
             </div>  
                 
@@ -62,13 +121,20 @@ export default function Home({ data: {home, site, hostingOptions} }) {
 
             <div className="flex flex-wrap text-2xs hosting-options lg:text-base">
 
-              <ul className="w-6/16 option-list">
+              <motion.ul 
+                className="w-6/16 option-list"
+                initial="hidden"
+                animate="visible"
+                variants={listVariants}
+              >
                 {options.map((option, i) => {
                   return (
-                    <li key={i}>{option}</li>
+                    <motion.li variants={itemVariants}>
+                      <span class="relative z-10">{option}</span>
+                    </motion.li>
                   )
                 })}
-              </ul>
+              </motion.ul>
 
               <div className="w-10/16">
 
@@ -80,7 +146,13 @@ export default function Home({ data: {home, site, hostingOptions} }) {
                     <div className="w-1/2" key={i}>
 
                       {(i == 0) ? (
-                        <div className="flex flex-col items-center leading-snug text-center text-white 2xl:-mt-86 -mt-50 lg:-mt-84 4xl:-mt-87 rounded-t-4xl bg-secondary">
+                        <motion.div 
+                          key={option.title}
+                          initial="hidden"
+                          animate="visible"
+                          variants={hostingVariants}
+                          transition={{duration: .5, delay: 2}}
+                          className="flex flex-col items-center leading-snug text-center text-white 2xl:-mt-86 -mt-50 lg:-mt-84 4xl:-mt-87 rounded-t-4xl bg-secondary">
                           
                           <p className="relative flex flex-wrap items-center px-4 py-2 -mt-4 font-light rounded-full text-2xs bg-secondary-light text-secondary-dark">
                             <img className="block mx-auto lg:-mt-1 lg:mr-2 lg:inline-block" src="images/icon-star.svg" width={15} height={18} alt="Most Popular" />
@@ -98,9 +170,15 @@ export default function Home({ data: {home, site, hostingOptions} }) {
                             </p>
                           </div>
                           
-                        </div>
+                        </motion.div>
                       ) : (
-                        <div className="flex flex-col items-center leading-snug text-center bg-white rounded-tl-none -mt-39 lg:-mt-62 2xl:-mt-62 text-secondary-dark rounded-t-4xl">
+                        <motion.div 
+                          key={option.title}
+                          initial="hidden"
+                          animate="visible"
+                          variants={hostingVariants}
+                          transition={{duration: .5, delay: 2.5}}
+                          className="flex flex-col items-center leading-snug text-center bg-white rounded-tl-none -mt-39 lg:-mt-62 2xl:-mt-62 text-secondary-dark rounded-t-4xl">
                           
                           <div className="w-full py-6">
                             <p className="px-6 leading-tight text-center md:px-12 lg:px-2">
@@ -113,24 +191,29 @@ export default function Home({ data: {home, site, hostingOptions} }) {
                             </p>
                           </div>
                           
-                        </div>
+                        </motion.div>
                       )}
 
-                      <ul className={(i == 0) ? "shadow-xl rounded-3xl" : ""}>
-                        <li>{(option.freeSslCertificate) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</li>
-                        <li>{option.backups}</li>
-                        <li>{option.uptime}</li>
-                        <li>{(option.unlimitedVisitors) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
-                        <li>{(option.dedicatedHighAvailabilityArchitecture) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
-                        <li>{(option.protectedNameservers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
-                        <li>{(option.dedicatedDdosProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
-                        <li>{(option.recommendedForEcommerce) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
-                        <li>{(option.clickfraudPpcProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
-                        <li>{(option.reactiveServerMonitoring) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
-                        <li>{(option.regularSecurityPatching) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
-                        <li>{(option.threatProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
-                        <li>{(option.http2EnabledServers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</li>
-                      </ul>
+                      <motion.ul
+                        className={(i == 0) ? "shadow-xl rounded-3xl text-xs" : "text-xs"}
+                        initial="hidden"
+                        animate="visible"
+                        variants={listVariants}
+                      >
+                        <motion.li variants={itemVariants}>{(option.freeSslCertificate) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                        <motion.li variants={itemVariants} class="font-semibold font-display text-base">{option.backups}</motion.li>
+                        <motion.li variants={itemVariants} class="font-semibold font-display text-base">{option.uptime}</motion.li>
+                        <motion.li variants={itemVariants}>{(option.unlimitedVisitors) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                        <motion.li variants={itemVariants}>{(option.dedicatedHighAvailabilityArchitecture) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                        <motion.li variants={itemVariants}>{(option.protectedNameservers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                        <motion.li variants={itemVariants}>{(option.dedicatedDdosProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                        <motion.li variants={itemVariants}>{(option.recommendedForEcommerce) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                        <motion.li variants={itemVariants}>{(option.clickfraudPpcProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                        <motion.li variants={itemVariants}>{(option.reactiveServerMonitoring) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                        <motion.li variants={itemVariants}>{(option.regularSecurityPatching) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                        <motion.li variants={itemVariants}>{(option.threatProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                        <motion.li variants={itemVariants}>{(option.http2EnabledServers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                      </motion.ul>
                       
                     </div>
                     )
