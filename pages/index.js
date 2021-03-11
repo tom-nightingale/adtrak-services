@@ -36,9 +36,9 @@ export default function Home({ data: {home, site, hostingOptions} }) {
             {renderMetaTags(home.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
-        <header className="relative p-8 overflow-hidden lg:py-12 lg:min-h-90 bg-secondary-dark">
+        <header className="relative p-8 pb-64 overflow-hidden lg:py-12 lg:pb-128 lg:min-h-90 bg-secondary-dark">
             
-            <div className="absolute top-0 left-0 w-full h-full opacity-10">
+            <div className="absolute top-0 left-0 z-0 w-full h-full opacity-10 gradient-fade">
                 <Image width={900} height={750} className="lg:w-3/5" data={home.heroImage.responsiveImage} /> 
             </div>
             
@@ -46,7 +46,7 @@ export default function Home({ data: {home, site, hostingOptions} }) {
                 <img className="mx-auto lg:m-0" src="images/adtrak-logo.svg" width={160} height={35} alt="Adtrak Media Limited" /> 
             </Container>   
             
-            <div className="w-full max-w-md mx-auto mt-8 text-center text-white lg:mt-24">
+            <div className="relative z-20 w-full max-w-md mx-auto mt-8 text-center text-white lg:mt-24">
 
               <h1 className="mb-2 text-lg font-semibold font-display xs:text-xl lg:text-2xl text-secondary-light" role="heading" aria-level="1">{home.heroTitle}</h1>
 
@@ -60,7 +60,7 @@ export default function Home({ data: {home, site, hostingOptions} }) {
 
           <Container>
 
-            <div className="flex flex-wrap hosting-options">
+            <div className="flex flex-wrap text-2xs hosting-options lg:text-base">
 
               <ul className="w-6/16 option-list">
                 {options.map((option, i) => {
@@ -72,7 +72,7 @@ export default function Home({ data: {home, site, hostingOptions} }) {
 
               <div className="w-10/16">
 
-                <div className="flex flex-wrap w-4/5 h-full">
+                <div className="flex flex-wrap w-full h-full md:w-11/12 2xl:w-4/5">
 
                   {hostingOptions.map((option, i) => {
                     return (
@@ -80,36 +80,36 @@ export default function Home({ data: {home, site, hostingOptions} }) {
                     <div className="w-1/2" key={i}>
 
                       {(i == 0) ? (
-                        <div className="flex flex-col items-center leading-snug text-center text-white -mt-83 rounded-t-4xl bg-secondary">
+                        <div className="flex flex-col items-center leading-snug text-center text-white 2xl:-mt-86 -mt-50 lg:-mt-84 4xl:-mt-87 rounded-t-4xl bg-secondary">
                           
-                          <p className="flex flex-wrap items-center px-4 py-2 -mt-4 text-xs font-light rounded-full realtive bg-secondary-light text-secondary-dark">
-                            <img className="inline-block mr-2 -mt-1" src="images/icon-star.svg" width={15} height={18} alt="Most Popular" />
-                            Most Popular!
+                          <p className="relative flex flex-wrap items-center px-4 py-2 -mt-4 font-light rounded-full text-2xs bg-secondary-light text-secondary-dark">
+                            <img className="block mx-auto lg:-mt-1 lg:mr-2 lg:inline-block" src="images/icon-star.svg" width={15} height={18} alt="Most Popular" />
+                            <span class="hidden lg:inline-block">Most Popular!</span>
                             </p>
                           
-                          <div className="w-full py-8">
-                            <p className="leading-tight">
-                              <span className="text-xl font-semibold font-display">{option.title}<span className="text-primary">.</span></span>
-                              <span className="block text-lg font-light opacity-50">Hosting</span>
+                          <div className="w-full py-4 2xl:py-8">
+                            <p className="px-6 leading-tight text-center md:px-12 lg:px-12 xl:px-16 2xl:px-0">
+                              <span className="text-lg font-semibold lg:text-xl font-display">{option.title}<span className="text-primary">.</span></span>
+                              <span className="block font-light opacity-50 lg:text-lg">Hosting</span>
                             </p>
-                            <p className="flex flex-col pt-8 mt-8 leading-tight border-t border-white border-opacity-10">
-                              <span className="text-3xl font-semibold leading-none font-display">£{option.price}</span>
-                              <span className="text-lg font-light opacity-50">per month</span>
+                            <p className="flex flex-col pt-4 mt-4 leading-tight border-t border-white lg:pt-8 2xl:py-8 lg:mt-8 border-opacity-10">
+                              <span className="text-lg font-semibold leading-none lg:text-3xl font-display">£{option.price}</span>
+                              <span className="font-light opacity-50 lg:text-lg">per month</span>
                             </p>
                           </div>
                           
                         </div>
                       ) : (
-                        <div className="flex flex-col items-center leading-snug text-center bg-white rounded-tl-none -mt-68 text-secondary-dark rounded-t-4xl">
+                        <div className="flex flex-col items-center leading-snug text-center bg-white rounded-tl-none -mt-39 lg:-mt-62 2xl:-mt-62 text-secondary-dark rounded-t-4xl">
                           
                           <div className="w-full py-6">
-                            <p className="leading-tight">
-                              <span className="text-xl font-semibold font-display">{option.title}<span className="text-primary">.</span></span>
-                              <span className="block text-lg font-light opacity-50">Hosting</span>
+                            <p className="px-6 leading-tight text-center md:px-12 lg:px-2">
+                              <span className="text-lg font-semibold lg:text-xl font-display">{option.title}<span className="text-primary">.</span></span>
+                              <span className="block font-light opacity-50 lg:text-lg">Hosting</span>
                             </p>
                             <p className="flex flex-col mt-4 leading-tight">
-                              <span className="text-3xl font-semibold leading-none font-display">£{option.price}</span>
-                              <span className="text-lg font-light opacity-50">per month</span>
+                              <span className="text-lg font-semibold leading-none lg:text-3xl font-display">£{option.price}</span>
+                              <span className="font-light opacity-50 lg:text-lg">per month</span>
                             </p>
                           </div>
                           

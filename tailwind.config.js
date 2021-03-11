@@ -27,6 +27,7 @@ module.exports = {
       display: ["Mont, '-apple-system', 'BlinkMacSystemFont', sans-serif"],
     },
     fontSize: {
+      '2xs': '14px',
       'xs': '16px',
       'sm': '18px',
       'base': '20px',
@@ -73,10 +74,14 @@ module.exports = {
         }
       },
       spacing: {
-        68: "15.35rem",
+        39: "9.5rem",
+        50: "12.4rem",
+        57: "14.35rem",
+        62: "15.35rem",
         72: "18rem",
-        83: "20.81rem",
-        84: "21rem",
+        84: "21.25rem",
+        86: "22.6rem",
+        87: "22.65rem",
         96: "24rem",
         128: "32rem",
       },
