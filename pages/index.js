@@ -36,10 +36,10 @@ export default function Home({ data: {home, site, hostingOptions} }) {
             {renderMetaTags(home.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
-        <header className="relative p-8 pb-64 overflow-hidden lg:py-12 lg:pb-128 lg:min-h-90 bg-secondary-dark">
-            
-            <div className="absolute top-0 left-0 z-0 w-full h-full opacity-10 gradient-fade">
-                <Image width={900} height={750} className="lg:w-3/5" data={home.heroImage.responsiveImage} /> 
+        <header className="relative p-8 pb-64 overflow-hidden lg:py-12 lg:pb-116 lg:min-h-90 bg-secondary-dark">
+              
+            <div className="absolute top-0 left-0 z-0 w-full h-full overflow-hidden opacity-10 gradient-fade lg:w-3/5">
+                <Image width={900} height={750} pictureClassName="h-full object-center object-cover" className="absolute bottom-0 left-0 h-full" data={home.heroImage.responsiveImage} /> 
             </div>
             
             <Container>
