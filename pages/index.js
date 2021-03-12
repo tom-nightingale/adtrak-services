@@ -19,7 +19,7 @@ export default function Home({ data: {home, site, hostingOptions} }) {
     'Unlimited Visitors',
     'Dedicated High Availability Architecture',
     'Protected Nameservers',
-    'Dedictaed DDOS Protection',
+    'Dedicated DDOS Protection',
     'Recommended for Ecommerce',
     'Clickfraud PPC Protection',
     'Reactive Server Monitoring',
@@ -77,7 +77,7 @@ export default function Home({ data: {home, site, hostingOptions} }) {
               variants={heroImageVariants}
               transition={{duration: 1}}
               className="absolute top-0 left-0 z-0 w-full h-full overflow-hidden opacity-10 gradient-fade lg:w-3/5">
-                <Image width={900} height={750} pictureClassName="h-full object-center object-cover" className="absolute bottom-0 left-0 h-full" data={home.heroImage.responsiveImage} /> 
+                <Image width={900} height={750} pictureClassName="h-full object-center object-cover" alt="Hosting with Adtrak" className="absolute bottom-0 left-0 h-full" data={home.heroImage.responsiveImage} /> 
             </motion.div>
             
             <motion.div
