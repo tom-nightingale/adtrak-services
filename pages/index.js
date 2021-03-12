@@ -68,7 +68,7 @@ export default function Home({ data: {home, site, hostingOptions} }) {
             {renderMetaTags(home.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
-        <header className="relative p-8 pb-64 overflow-hidden lg:py-12 lg:pb-116 lg:min-h-90 bg-secondary-dark">
+        <header className="relative p-8 pb-64 overflow-hidden lg:py-12 lg:pb-116 bg-secondary-dark">
               
             <motion.div
               key="heroImage"
@@ -130,7 +130,7 @@ export default function Home({ data: {home, site, hostingOptions} }) {
                 {options.map((option, i) => {
                   return (
                     <motion.li variants={itemVariants}>
-                      <span class="relative z-10">{option}</span>
+                      <span className="relative z-10">{option}</span>
                     </motion.li>
                   )
                 })}
@@ -195,7 +195,7 @@ export default function Home({ data: {home, site, hostingOptions} }) {
                       )}
 
                       <motion.ul
-                        className={(i == 0) ? "shadow-xl rounded-3xl text-xs" : "text-xs"}
+                        className={(i == 0) ? "shadow-xl rounded-3xl text-xs relative z-50" : "text-xs"}
                         initial="hidden"
                         animate="visible"
                         variants={listVariants}
