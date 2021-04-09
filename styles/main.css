@@ -41,7 +41,7 @@ img {
 
 .hosting-options {
   li {
-    @apply flex flex-col items-center justify-center h-20 p-4 text-center border-b border-gray-100;
+    @apply flex items-center justify-end h-20 p-4 text-center border-b border-gray-100;
 
     &:nth-of-type(even) {
       @apply relative bg-gray-100;
@@ -57,7 +57,7 @@ img {
 @screen lg {
 
   .hosting-options .option-list li {
-    @apply items-end pr-6;
+    @apply justify-end pr-6;
 
     &:nth-of-type(even):before {
       content: '';

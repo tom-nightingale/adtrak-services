@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head'
 import { request } from "../lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
@@ -10,23 +11,18 @@ import FancyLink from '../components/fancyLink'
 import { motion } from 'framer-motion'
 import { Image, renderMetaTags } from "react-datocms";
 
-export default function Home({ data: {home, site, hostingOptions} }) {
+export default function Home({ data: {home, site, hostingFeatures, hostingOptions} }) {
 
-  const options = [
-    'Free SSL Certificate',
-    'Backups',
-    'Uptime',
-    'Unlimited Visitors',
-    'Dedicated High Availability Architecture',
-    'Protected Nameservers',
-    'Dedicated DDOS Protection',
-    'Recommended for Ecommerce',
-    'Clickfraud PPC Protection',
-    'Reactive Server Monitoring',
-    'Regular Security Patching',
-    '24/7 Threat Protection',
-    'HTTP/2 Enabled Servers',
-  ];
+  const [modal, showModal] = useState(false);
+
+  function handleModal(desc) {
+    showModal(true);
+    document.querySelector('.modal-content').innerHTML = desc;
+  }
+
+  function handleClose() {
+    showModal(false);
+  }
 
   const heroImageVariants = {
     hidden: { left: -200, opacity: 0 },
@@ -119,18 +115,21 @@ export default function Home({ data: {home, site, hostingOptions} }) {
 
           <Container>
 
-            <div className="flex flex-wrap text-2xs hosting-options lg:text-base">
+            <div className="relative flex flex-wrap text-2xs hosting-options lg:text-base">
 
               <motion.ul 
-                className="w-6/16 option-list"
+                className="relative w-6/16 option-list"
                 initial="hidden"
                 animate="visible"
                 variants={listVariants}
               >
-                {options.map((option, i) => {
+                {hostingFeatures.map((option, i) => {
                   return (
-                    <motion.li variants={itemVariants}>
-                      <span className="relative z-10">{option}</span>
+                    <motion.li variants={itemVariants} key={i}>
+                      <span className="relative z-10">{option.title}</span>
+                      <button className="relative z-50 ml-4 opacity-50 text-2xs hover:opacity-full" aria-label="Expand information" onClick={() => handleModal(option.description)}>
+                        <img className="w-4 h-4 text-primary" src={`images/icon-info.svg`} alt="View more information" />
+                      </button>
                     </motion.li>
                   )
                 })}
@@ -156,7 +155,7 @@ export default function Home({ data: {home, site, hostingOptions} }) {
                           
                           <p className="relative flex flex-wrap items-center px-4 py-2 -mt-4 font-light rounded-full text-2xs bg-secondary-light text-secondary-dark">
                             <img className="block mx-auto lg:-mt-1 lg:mr-2 lg:inline-block" src="images/icon-star.svg" width={15} height={18} alt="Most Popular" />
-                            <span class="hidden lg:inline-block">Most Popular!</span>
+                            <span className="hidden lg:inline-block">Most Popular!</span>
                             </p>
                           
                           <div className="w-full py-4 2xl:py-8">
@@ -195,14 +194,14 @@ export default function Home({ data: {home, site, hostingOptions} }) {
                       )}
 
                       <motion.ul
-                        className={(i == 0) ? "shadow-xl rounded-3xl text-xs relative z-50" : "text-xs"}
+                        className={(i == 0) ? "shadow-xl rounded-3xl text-xs relative z-40" : "text-xs"}
                         initial="hidden"
                         animate="visible"
                         variants={listVariants}
                       >
                         <motion.li variants={itemVariants}>{(option.freeSslCertificate) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                        <motion.li variants={itemVariants} class="font-semibold font-display lg:text-base">{option.backups}</motion.li>
-                        <motion.li variants={itemVariants} class="font-semibold font-display lg:text-base">{option.uptime}</motion.li>
+                        <motion.li variants={itemVariants} className="font-semibold font-display lg:text-base">{option.backups}</motion.li>
+                        <motion.li variants={itemVariants} className="font-semibold font-display lg:text-base">{option.uptime}</motion.li>
                         <motion.li variants={itemVariants}>{(option.unlimitedVisitors) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
                         <motion.li variants={itemVariants}>{(option.dedicatedHighAvailabilityArchitecture) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
                         <motion.li variants={itemVariants}>{(option.protectedNameservers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
@@ -212,7 +211,7 @@ export default function Home({ data: {home, site, hostingOptions} }) {
                         <motion.li variants={itemVariants}>{(option.reactiveServerMonitoring) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
                         <motion.li variants={itemVariants}>{(option.regularSecurityPatching) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
                         <motion.li variants={itemVariants}>{(option.threatProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
-                        <motion.li variants={itemVariants}>{(option.http2EnabledServers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                        {/* <motion.li variants={itemVariants}>{(option.http2EnabledServers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li> */}
                       </motion.ul>
                       
                     </div>
@@ -231,6 +230,13 @@ export default function Home({ data: {home, site, hostingOptions} }) {
         </div>        
 
         <Footer content={home.disclaimer} />
+
+        <motion.div className={`modal fixed z-50 p-4 bg-primary text-white text-center transition-all duration-1000 bottom-0 left-0 w-full text-2xs ${modal ? 'opacity-full' : 'opacity-0'}`}>
+          <>
+            <button className="absolute top-4 right-4" onClick={() => handleClose()}>Close</button>
+            <p className="modal-content">...</p>
+          </>
+        </motion.div>
 
     </Layout>
 
@@ -272,7 +278,10 @@ const HOMEPAGE_QUERY = `
       reactiveServerMonitoring
       regularSecurityPatching
       threatProtection
-      http2EnabledServers
+    },
+    hostingFeatures: allHostingFeatures {
+      title
+      description
     }
   }
   ${metaTagsFragment}
