@@ -127,7 +127,7 @@ export default function Home({ data: {home, site, hostingFeatures, hostingOption
                   return (
                     <motion.li variants={itemVariants} key={i}>
                       <span className="relative z-10">{option.title}</span>
-                      <button className="relative z-50 ml-4 opacity-50 text-2xs hover:opacity-full" aria-label="Expand information" onClick={() => handleModal(option.description)}>
+                      <button className="relative z-50 ml-4 opacity-50 text-2xs hover:opacity-100" aria-label="Expand information" onClick={() => handleModal(option.description)}>
                         <img className="w-4 h-4 text-primary" src={`images/icon-info.svg`} alt="View more information" />
                       </button>
                     </motion.li>
