@@ -41,7 +41,7 @@ img {
 
 .hosting-options {
   li {
-    @apply flex items-center justify-end h-20 p-4 text-center border-b border-gray-100;
+    @apply flex items-center justify-center h-20 p-4 text-center border-b border-gray-100;
 
     &:nth-of-type(even) {
       @apply relative bg-gray-100;
@@ -79,4 +79,44 @@ img {
     @apply absolute top-0 left-0 z-10 w-full h-full;
   }
   
+}
+
+
+/* Mobile menu button */
+.btn-menu {
+  @apply absolute top-0 right-0 z-50 flex flex-col items-start justify-around w-10 h-10 mt-10 mr-10 outline-none;
+
+  &:focus {
+    @apply outline-none;
+  }
+
+  &:hover span:nth-child(2) {
+    @apply w-full;
+  }
+}
+
+.btn-menu span {
+  @apply relative w-10 transition-all duration-300 bg-white;
+  transform-origin: 0;
+  height: .125rem;
+}
+
+.btn-menu span:nth-of-type(2) {
+  @apply w-10/12; 
+}
+
+.btn-menu.open span {
+    &:first-child {
+      transform: rotate(45deg);
+      @apply w-9
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+      @apply w-9
+    }
 }
