@@ -4,10 +4,12 @@ import { request } from "../lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
 import Layout from '../components/layout'
 import Header from '../components/header'
-import { Image, renderMetaTags } from "react-datocms";
+import { renderMetaTags } from "react-datocms";
+import { motion } from "framer-motion"
+import { fade } from "../lib/transitionHelpers"
 
 
-export default function Home({ data: {home, site, hostingFeatures, hostingOptions} }) {
+export default function Home({ data: {home, site} }) {
 
   
 
@@ -18,13 +20,25 @@ export default function Home({ data: {home, site, hostingFeatures, hostingOption
         <Head>
             {renderMetaTags(home.seo.concat(site.faviconMetaTags))} 
         </Head>  
+
+        <motion.div
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          className="overflow-x-hidden"
+        >  
+          <motion.div variants={fade}>
         
-        <Header
-          navLinks={home.heroLinks} 
-          heroImage={home.heroImage}
-          heroTitle={home.heroTitle}
-          heroBlurb={home.heroBlurb}
-        />
+            <Header
+              navLinks={home.heroLinks} 
+              heroImage={home.heroImage}
+              heroTitle={home.heroTitle}
+              heroBlurb={home.heroBlurb}
+            />
+
+          </motion.div>
+
+        </motion.div>
         
     </Layout>
 

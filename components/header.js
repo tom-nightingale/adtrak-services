@@ -9,7 +9,6 @@ export default function Header({ navLinks, heroImage, heroTitle, heroBlurb }) {
 
     const router = useRouter();
     const currentLink = router.pathname.replace('/', '');
-    console.log(currentLink);
 
     const heroImageVariants = {
         hidden: { left: -200, opacity: 0 },
@@ -23,41 +22,35 @@ export default function Header({ navLinks, heroImage, heroTitle, heroBlurb }) {
 
     return (
         <>
-        <MobileMenu navItems={navLinks} />
-        
-        <header className="relative z-10 p-8 pb-64 overflow-hidden lg:py-12 lg:pb-116 bg-secondary-dark">
-            
-            <motion.div
-              key="logo"
-              initial="hidden"
-              animate="visible"
-              variants={logoVariants}
-              transition={{duration: .5}}
-            >
-              <Container>
+        <MobileMenu navItems={navLinks} />        
 
-                <div className="flex flex-wrap justify-between w-full">
+          <div className="absolute top-0 z-20 w-full pt-12">
+            <Container>
 
-                  <Link href="/">
-                      <a className="block">
-                        <img className="mx-auto lg:m-0" src="images/adtrak-logo.svg" width={160} height={35} alt="Adtrak Media Limited" /> 
-                      </a>
-                  </Link>
+              <div className="flex flex-wrap justify-between w-full px-8">
 
-                  <div className="hidden md:block">
-                    {navLinks.map((link, i) => {
-                      return(
-                          <Link key={i} href={link.slug} scroll={false}>
-                            <a aria-label={`Go to ${link.heroTitle}`} className={`inline-flex items-center p-2 mx-4 text-white transition-all duration-500 hover:no-underline group hover:text-primary ${currentLink === link.slug ? 'text-secondary-light' : ''}`}>
-                              {link.heroTitle}
-                            </a>
-                          </Link>
-                      )
-                    })}
-                    </div>
+                <Link href="/">
+                    <a className="block">
+                      <img className="mx-auto lg:m-0" src="images/adtrak-logo.svg" width={160} height={35} alt="Adtrak Media Limited" /> 
+                    </a>
+                </Link>
+
+                <div className="hidden lg:block">
+                  {navLinks.map((link, i) => {
+                    return(
+                        <Link key={i} href={link.slug} scroll={false}>
+                          <a aria-label={`Go to ${link.heroTitle}`} className={`inline-flex items-center p-2 mx-4 text-white transition-all duration-500 hover:no-underline group hover:text-primary ${currentLink === link.slug ? 'text-secondary-light' : ''}`}>
+                            {link.heroTitle}
+                          </a>
+                        </Link>
+                    )
+                  })}
                   </div>
-              </Container>   
-            </motion.div>
+                </div>
+            </Container>   
+          </div>        
+        
+        <header className="relative z-10 p-8 pt-32 pb-64 overflow-hidden lg:py-12 lg:pb-116 bg-secondary-dark">
             
             <motion.div
               key="heroImage"

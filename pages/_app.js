@@ -1,9 +1,17 @@
+import { useEffect, React } from 'react';
 import '../styles/main.css'
 import { AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
 
 export default function App({ Component, pageProps }) {
-    const router = useRouter()
+    const router = useRouter();
+
+    useEffect(() => {
+        const handleRouteChange = (url) => { 
+        window.setTimeout(() => window.scrollTo(0, 0), 1000)
+        }
+        router.events.on('routeChangeStart', handleRouteChange)
+    }, [router.events])
 
     return (
         <AnimatePresence exitBeforeEnter>

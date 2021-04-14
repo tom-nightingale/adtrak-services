@@ -9,7 +9,8 @@ import Container from '../components/container'
 import IconThumb from '../components/iconThumb'
 import FancyLink from '../components/fancyLink'
 import { motion } from 'framer-motion'
-import { Image, renderMetaTags } from "react-datocms";
+import { renderMetaTags } from "react-datocms";
+import { fade } from "../lib/transitionHelpers"
 
 export default function Home({ data: {home, webDesign, site} }) {
 
@@ -64,20 +65,32 @@ export default function Home({ data: {home, webDesign, site} }) {
             {renderMetaTags(webDesign.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
-        <Header
-          navLinks={home.heroLinks} 
-          heroImage={webDesign.heroImage}
-          heroTitle={webDesign.heroTitle}
-          heroBlurb={webDesign.heroBlurb}
-        /> 
+        <motion.div
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          className="overflow-x-hidden"
+        >  
+          <motion.div variants={fade}>
 
-        <div className="w-full">
+            <Header
+              navLinks={home.heroLinks} 
+              heroImage={webDesign.heroImage}
+              heroTitle={webDesign.heroTitle}
+              heroBlurb={webDesign.heroBlurb}
+            /> 
 
-          
-          
-        </div>        
+            <div className="w-full">
 
-        <Footer content={webDesign.disclaimer} />
+              
+              
+            </div>        
+
+            <Footer content={webDesign.disclaimer} />
+
+          </motion.div>
+
+        </motion.div>         
 
         <motion.div className={`modal fixed z-50 p-4 bg-primary text-white text-center transition-all duration-1000 bottom-0 left-0 w-full text-2xs ${modal ? 'opacity-full' : 'opacity-0'}`}>
           <>

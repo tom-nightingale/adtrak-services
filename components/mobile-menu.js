@@ -29,14 +29,14 @@ export default function mobileMenu({navItems}) {
 
     return (
         <>
-            <button aria-label="Open Menu" open={open} onClick={() => setOpen(!open)} className={`absolute top-0 right-0 z-50 btn-menu md:hidden ${open ? 'open' : ''}`}>
+            <button aria-label="Open Menu" open={open} onClick={() => setOpen(!open)} className={`absolute top-0 right-0 z-50 btn-menu lg:hidden ${open ? 'open' : ''}`}>
                 <span />
                 <span />
                 <span />
             </button>
 
             {/* Mobile Menu */}
-            <div open={open} className={`fixed top-0 left-0 w-full h-full p-4 transition-all duration-200 bg-secondary-dark md:hidden ${open ? 'opacity-100 z-40' : 'opacity-0'}`}>
+            <div open={open} className={`fixed top-0 left-0 w-full h-full p-4 transition-all duration-200 bg-secondary-dark lg:hidden ${open ? 'opacity-100 z-40' : 'opacity-0'}`}>
                 
                 <div className="flex flex-col items-center justify-center h-full">
 
