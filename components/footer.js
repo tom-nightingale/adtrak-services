@@ -9,7 +9,7 @@ export default function Footer({ content }) {
     }
 
     return (
-        <footer className="px-4 text-center">
+        <footer className="px-4 text-center bg-white">
             <Container>
 
                 <motion.div
@@ -17,7 +17,7 @@ export default function Footer({ content }) {
                     animate="visible"
                     variants={logoVariants}
                     transition={{duration: .5, delay: 6.5}}
-                    className="max-w-md mx-auto my-24 text-center opacity-50 content"
+                    className="max-w-md py-24 mx-auto text-center opacity-50 content"
                     dangerouslySetInnerHTML={{ __html: content }} 
                 />
                 
