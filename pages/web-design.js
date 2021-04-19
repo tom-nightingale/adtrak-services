@@ -80,7 +80,7 @@ export default function Home({ data: {home, webDesign, site} }) {
               heroBlurb={webDesign.heroBlurb}
             /> 
 
-            <div className="w-full">
+            <div className="w-full bg-white">
 
               
               

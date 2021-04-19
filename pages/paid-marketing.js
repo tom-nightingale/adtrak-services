@@ -48,7 +48,7 @@ export default function Home({ data: {home, paidMarketing, site} }) {
               heroBlurb={paidMarketing.heroBlurb}
             />  
 
-            <div className="w-full">
+            <div className="w-full bg-white">
 
               
               

@@ -99,7 +99,7 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
                       <div className="flex flex-wrap w-full p-4 sm:w-1/2 md:w-1/4" key={i}>
                         <Link href={item.slug} scroll={false}>
                           <a className="flex flex-col justify-center w-full p-4 leading-snug text-center transition-all duration-500 bg-white rounded-2xl lg:text-lg sm:text-left 2xl:p-12 sm:p-8 xl:text-xl font-display text-secondary-dark hover:no-underline hover:text-primary">
-                            <div class="lg:w-1/2">
+                            <div className="lg:w-1/2">
                               {item.heroTitle}
                             </div>
                           </a>

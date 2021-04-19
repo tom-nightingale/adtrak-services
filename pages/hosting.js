@@ -49,7 +49,7 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
               headerModifiers="pb-116"
             />
 
-            <div className="w-full">
+            <div className="w-full bg-white">
 
               <Container>
 

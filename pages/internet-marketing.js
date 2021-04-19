@@ -51,7 +51,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
               headerModifiers=""
             />        
 
-            <div className="w-full">
+            <div className="w-full bg-white">
 
               <Container>
 
