@@ -5,7 +5,7 @@ import Container from './container'
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-export default function Header({ index, navLinks, heroImage, heroTitle, heroBlurb, heroLinks, heroTextColor, heroBgColor }) {
+export default function Header({ index, navLinks, heroImage, heroTitle, heroBlurb, heroLinks, heroTextColor, heroBgColor, heroGradientHex, headerModifiers}) {
 
     const router = useRouter();
     const currentLink = router.pathname.replace('/', '');
@@ -55,7 +55,7 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
             </Container>   
           </div>        
         
-        <header className={`relative z-10 p-8 pt-32 ${index ? '' : 'pb-64 lg:pb-116' } overflow-hidden lg:py-12 ${heroBgColor ? heroBgColor : 'bg-secondary-dark' }`}>
+        <header className={`relative z-10 p-8 pt-32 pb-64 overflow-hidden ${heroBgColor ? heroBgColor : 'bg-secondary-dark' } ${headerModifiers}`}>
             
             {!index && heroImage &&
               <motion.div
@@ -64,7 +64,8 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
                 animate="visible"
                 variants={heroImageVariants}
                 transition={{duration: 1}}
-                className="absolute top-0 left-0 z-0 w-full h-full overflow-hidden opacity-10 gradient-fade lg:w-3/5">
+                className="absolute top-0 left-0 z-0 w-full h-full overflow-hidden opacity-10 lg:w-3/5">
+                  <div className="absolute top-0 bottom-0 right-0 z-10 w-1/5" style={{ background: `linear-gradient(90deg, rgba( ${heroGradientHex} ,0) 0%, rgba(${heroGradientHex} ,1) 100%)` }}></div>
                   <Image width={900} height={750} pictureClassName="h-full object-center object-cover" alt="Hosting with Adtrak" className="absolute bottom-0 left-0 h-full" data={heroImage.responsiveImage} /> 
               </motion.div>
             }

@@ -12,7 +12,7 @@ import { motion } from 'framer-motion'
 import { renderMetaTags } from "react-datocms";
 import { fade } from "../lib/transitionHelpers"
 
-export default function Home({ data: {home, internetMarketing, site} }) {
+export default function Home({ data: {home, internetMarketing, imTiers, site} }) {
 
   const [modal, showModal] = useState(false);
 
@@ -25,8 +25,8 @@ export default function Home({ data: {home, internetMarketing, site} }) {
     showModal(false);
   }
 
-  const hostingVariants = {
-    hidden: { y: -100, opacity: 0 },
+  const tierVariants = {
+    hidden: { y: 25, opacity: 0 },
     visible: {y: 0, opacity: 1},
   }
 
@@ -42,7 +42,7 @@ export default function Home({ data: {home, internetMarketing, site} }) {
     }
   }
 
-  const itemVariants = {
+  const featureVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y:0 }
   }
@@ -68,11 +68,115 @@ export default function Home({ data: {home, internetMarketing, site} }) {
               heroImage={internetMarketing.heroImage}
               heroTitle={internetMarketing.heroTitle}
               heroBlurb={internetMarketing.heroBlurb}
+              heroBgColor="bg-secondary"
+              heroGradientHex="59, 92, 196"
+              headerModifiers=""
             />        
 
             <div className="w-full">
 
-              
+              <Container>
+
+                <div className="relative z-20 flex flex-wrap text-2xs hosting-options lg:text-base">
+
+                  <motion.ul 
+                    className="relative w-1/4 option-list"
+                    initial="hidden"
+                    animate="visible"
+                    variants={listVariants}
+                  >
+                    {internetMarketing.features.map((option, i) => {
+                      return (
+                        <motion.li variants={featureVariants} key={i}>
+                          <span className="relative z-10">{option.title}</span>
+                          <button className="relative z-50 ml-4 transition-all duration-1000 opacity-50 text-2xs hover:opacity-100" aria-label="Expand information" onClick={() => handleModal(option.description)}>
+                            <img className="w-4 h-4 text-primary" src={`images/icon-info.svg`} alt="View more information" />
+                          </button>
+                        </motion.li>
+                      )
+                    })}
+                  </motion.ul>
+
+                  <div className="w-3/4">
+
+                    <div className="flex flex-wrap w-full h-full">
+
+                      {imTiers.map((tier, i) => {
+                        return (
+                          
+                        <div className="w-1/6" key={i}>
+
+                          <motion.div 
+                            key={tier.title}
+                            initial="hidden"
+                            animate="visible"
+                            variants={tierVariants}
+                            transition={{duration: .5, delay: 2.5}}
+                            className={`flex flex-col items-center leading-snug text-center bg-white ${tier.mostPopular ? '-mt-38 lg:-mt-45 2xl:-mt-45 rounded-t-4xl' : '-mt-38 lg:-mt-39 2xl:-mt-39'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 5 ? 'rounded-tr-4xl' : ''}`}>
+                            
+                            <div className={`relative w-full py-6 ${tier.mostPopular ? 'pt-14' : ''} `}>
+
+                              {tier.mostPopular &&
+                                <p className="absolute flex flex-wrap items-center justify-center px-4 py-2 font-light text-center transform -translate-x-1/2 rounded-full xl:w-4/5 -top-4 left-1/2 text-2xs bg-secondary-light text-secondary-dark">
+                                  <img className="block mx-auto xl:mx-0 xl:mr-2 lg:-mt-1 lg:inline-block" src="images/icon-star.svg" width={15} height={18} alt="Most Popular" />
+                                  <span className="hidden xl:inline-block">Most Popular!</span>
+                                </p>
+                              }
+                            
+                              <p className="px-2 leading-tight text-center xs:px-8">
+                                <span className="text-xs font-semibold opacity-50 lg:text-lg font-display">{tier.title}</span>
+                              </p>
+                              <p className="flex flex-col mt-4 leading-tight">
+                                <span className="text-lg font-semibold leading-none lg:text-xl font-display">£{tier.price}</span>
+                                <span className="text-sm font-light opacity-50">{tier.frequency}</span>
+                              </p>
+                            </div>
+                            
+                          </motion.div>
+                          
+
+                          <motion.ul
+                            className={tier.mostPopular ? "shadow-xl rounded-3xl text-xs relative z-40" : "text-xs"}
+                            initial="hidden"
+                            animate="visible"
+                            variants={listVariants}
+                          >
+                            <motion.li variants={featureVariants}>{(tier.healthChecks) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.analyticsAnalysis) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.algorithmCompliance) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.citationBuildingMaintenance) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.googleMyBusiness) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.quarterlyPerformanceReview) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants} className="font-semibold font-display lg:text-base">{tier.rankTracking}</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.ongoingOptimisation) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.backlinkProfileAnalysis) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.advancedLinkBuilding) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.articleManagement) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.reviewsManagement) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.siteSpeedManagement) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.uxAnalysis) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.cro) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.digitalPr) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.organicSocialMedia) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.paidSocialMedia) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.graphicDesign) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.photography) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.videography) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants}>{(tier.animation) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+
+                          </motion.ul>
+                          
+                        </div>
+                        )
+                      })}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </Container>
               
             </div>        
 
@@ -129,14 +233,46 @@ const HOMEPAGE_QUERY = `
       heroTitle
       heroBlurb
       heroImage {
-        responsiveImage(imgixParams: {fm: png, w:900, h:750, crop: entropy, fit: crop, blendMode: luminosity}) {
+        responsiveImage(imgixParams: {fm: png, w:900, h:750, crop: entropy, fit: crop, blendMode: multiply}) {
           ...responsiveImageFragment
         }
+      }
+      features {
+        title
+        description
       }
       disclaimer
       seo: _seoMetaTags {
         ...metaTagsFragment
       }
+    }
+    imTiers : allInternetMarketingTiers {
+      title
+      price
+      mostPopular
+      frequency
+      healthChecks
+      analyticsAnalysis
+      algorithmCompliance
+      citationBuildingMaintenance
+      googleMyBusiness
+      quarterlyPerformanceReview
+      rankTracking
+      ongoingOptimisation
+      backlinkProfileAnalysis
+      advancedLinkBuilding
+      articleManagement
+      reviewsManagement
+      siteSpeedManagement
+      uxAnalysis
+      cro
+      digitalPr
+      organicSocialMedia
+      paidSocialMedia
+      graphicDesign
+      photography
+      videography
+      animation
     }
   }
   ${metaTagsFragment}

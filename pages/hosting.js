@@ -25,7 +25,7 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
   }
 
   const hostingVariants = {
-    hidden: { y: -100, opacity: 0 },
+    hidden: { y: 25, opacity: 0 },
     visible: {y: 0, opacity: 1},
   }
 
@@ -67,6 +67,8 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
               heroImage={hosting.heroImage}
               heroTitle={hosting.heroTitle}
               heroBlurb={hosting.heroBlurb}
+              heroGradientHex="18, 40, 76"
+              headerModifiers="pb-116"
             />
 
             <div className="w-full">
