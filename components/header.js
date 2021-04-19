@@ -11,8 +11,8 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
     const currentLink = router.pathname.replace('/', '');
 
      const indexHeroImageVariants = {
-        hidden: { top: 200, opacity: 0 },
-        visible: { top: 0, opacity: 1},
+        hidden: { marginTop: 200, opacity: 0 },
+        visible: { marginTop: 0, opacity: 1 },
     }
 
     const heroImageVariants = {
@@ -77,7 +77,7 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
                 animate="visible"
                 variants={logoVariants}
                 transition={{duration: .5, delay: 1}}
-                className={`mb-2 text-lg font-semibold font-display xs:text-xl lg:text-2xl ${heroTextColor ? heroTextColor : 'text-secondary-light'} `} role="heading" aria-level="1">{heroTitle}</motion.h1>
+                className={`mb-2 text-lg font-semibold font-display leading-snug xs:text-xl lg:text-2xl ${heroTextColor ? heroTextColor : 'text-secondary-light'} `} role="heading" aria-level="1">{heroTitle}</motion.h1>
 
                 <motion.div 
                 key="heroBlurb"
@@ -116,7 +116,7 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
                 initial="hidden"
                 animate="visible"
                 variants={indexHeroImageVariants}
-                transition={{duration: 1}}
+                transition={{duration: 2.5}}
                 className="">
                   <Image width={900} height={750} pictureClassName="" alt="Hosting with Adtrak" className="" data={heroImage.responsiveImage} /> 
               </motion.div>

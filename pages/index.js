@@ -58,7 +58,7 @@ const HOMEPAGE_QUERY = `
       heroTitle
       heroBlurb
       heroImage {
-        responsiveImage(imgixParams: {fm: png, w:1920, h:796, crop: entropy, fit: crop}) {
+        responsiveImage(imgixParams: {fm: png, w:1920, h:796, crop: entropy, fit: crop }) {
           ...responsiveImageFragment
         }
       }
