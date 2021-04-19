@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import Head from 'next/head'
 import { request } from "../lib/datocms";
+import { renderMetaTags } from "react-datocms";
 import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
+import { fade, tierVariants, listVariants, featureVariants } from "../lib/transitionHelpers"
 import Layout from '../components/layout'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Container from '../components/container'
 import IconThumb from '../components/iconThumb'
-import FancyLink from '../components/fancyLink'
 import { motion } from 'framer-motion'
-import { renderMetaTags } from "react-datocms";
-import { fade } from "../lib/transitionHelpers"
+
 
 export default function Home({ data: {home, internetMarketing, imTiers, site} }) {
 
@@ -23,29 +23,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
 
   function handleClose() {
     showModal(false);
-  }
-
-  const tierVariants = {
-    hidden: { y: 25, opacity: 0 },
-    visible: {y: 0, opacity: 1},
-  }
-
-  const listVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delay: 3,
-        delayChildren: 3,
-        staggerChildren: 0.25
-      }
-    }
-  }
-
-  const featureVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y:0 }
-  }
+  }  
 
   return (
 
@@ -112,7 +90,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                             animate="visible"
                             variants={tierVariants}
                             transition={{duration: .5, delay: 2.5}}
-                            className={`flex flex-col items-center leading-snug text-center bg-white ${tier.mostPopular ? '-mt-38 lg:-mt-45 2xl:-mt-45 rounded-t-4xl' : '-mt-38 lg:-mt-39 2xl:-mt-39'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 5 ? 'rounded-tr-4xl' : ''}`}>
+                            className={`flex flex-col items-center leading-snug text-center bg-white ${tier.mostPopular ? '-mt-38 lg:-mt-45 rounded-t-4xl' : '-mt-38 lg:-mt-39 2xl:-mt-39'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 5 ? 'rounded-tr-4xl' : ''}`}>
                             
                             <div className={`relative w-full py-6 ${tier.mostPopular ? 'pt-14' : ''} `}>
 
@@ -128,7 +106,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                               </p>
                               <p className="flex flex-col mt-4 leading-tight">
                                 <span className="text-lg font-semibold leading-none lg:text-xl font-display">£{tier.price}</span>
-                                <span className="text-sm font-light opacity-50">{tier.frequency}</span>
+                                <span className="text-xs font-light opacity-50">{tier.nickname}</span>
                               </p>
                             </div>
                             
@@ -147,7 +125,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                             <motion.li variants={featureVariants}>{(tier.citationBuildingMaintenance) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
                             <motion.li variants={featureVariants}>{(tier.googleMyBusiness) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
                             <motion.li variants={featureVariants}>{(tier.quarterlyPerformanceReview) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                            <motion.li variants={featureVariants} className="font-semibold font-display lg:text-base">{tier.rankTracking}</motion.li>
+                            <motion.li variants={featureVariants} className="font-display lg:text-base">{tier.rankTracking}</motion.li>
                             <motion.li variants={featureVariants}>{(tier.ongoingOptimisation) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
                             <motion.li variants={featureVariants}>{(tier.backlinkProfileAnalysis) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
                             <motion.li variants={featureVariants}>{(tier.advancedLinkBuilding) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
@@ -250,7 +228,7 @@ const HOMEPAGE_QUERY = `
       title
       price
       mostPopular
-      frequency
+      nickname
       healthChecks
       analyticsAnalysis
       algorithmCompliance

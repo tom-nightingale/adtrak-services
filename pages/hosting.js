@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import Head from 'next/head'
 import { request } from "../lib/datocms";
-import { fade } from "../lib/transitionHelpers";
+import { renderMetaTags } from "react-datocms";
 import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
+import { fade, tierVariants, listVariants, featureVariants } from "../lib/transitionHelpers"
 import Layout from '../components/layout'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Container from '../components/container'
 import IconThumb from '../components/iconThumb'
 import { motion } from 'framer-motion'
-import { renderMetaTags } from "react-datocms";
 
 export default function Home({ data: {home, hosting, site, hostingOptions} }) {
 
@@ -22,28 +22,6 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
 
   function handleClose() {
     showModal(false);
-  }
-
-  const hostingVariants = {
-    hidden: { y: 25, opacity: 0 },
-    visible: {y: 0, opacity: 1},
-  }
-
-  const listVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delay: 3,
-        delayChildren: 3,
-        staggerChildren: 0.25
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y:0 }
   }
 
   return (
@@ -85,7 +63,7 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
                   >
                     {hosting.features.map((option, i) => {
                       return (
-                        <motion.li variants={itemVariants} key={i}>
+                        <motion.li variants={featureVariants} key={i}>
                           <span className="relative z-10">{option.title}</span>
                           <button className="relative z-50 ml-4 transition-all duration-1000 opacity-50 text-2xs hover:opacity-100" aria-label="Expand information" onClick={() => handleModal(option.description)}>
                             <img className="w-4 h-4 text-primary" src={`images/icon-info.svg`} alt="View more information" />
@@ -109,7 +87,7 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
                               key={option.title}
                               initial="hidden"
                               animate="visible"
-                              variants={hostingVariants}
+                              variants={tierVariants}
                               transition={{duration: .5, delay: 2}}
                               className="flex flex-col items-center leading-snug text-center text-white -mt-44 sm:-mt-50 2xl:-mt-86 lg:-mt-84 4xl:-mt-87 rounded-t-4xl bg-secondary">
                               
@@ -135,7 +113,7 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
                               key={option.title}
                               initial="hidden"
                               animate="visible"
-                              variants={hostingVariants}
+                              variants={tierVariants}
                               transition={{duration: .5, delay: 2.5}}
                               className="flex flex-col items-center leading-snug text-center bg-white rounded-tl-none -mt-38 lg:-mt-62 2xl:-mt-62 text-secondary-dark rounded-t-4xl">
                               
@@ -159,19 +137,19 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
                             animate="visible"
                             variants={listVariants}
                           >
-                            <motion.li variants={itemVariants}>{(option.freeSslCertificate) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                            <motion.li variants={itemVariants} className="font-semibold font-display lg:text-base">{option.backups}</motion.li>
-                            <motion.li variants={itemVariants} className="font-semibold font-display lg:text-base">{option.uptime}</motion.li>
-                            <motion.li variants={itemVariants}>{(option.unlimitedVisitors) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
-                            <motion.li variants={itemVariants}>{(option.dedicatedHighAvailabilityArchitecture) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
-                            <motion.li variants={itemVariants}>{(option.protectedNameservers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
-                            <motion.li variants={itemVariants}>{(option.dedicatedDdosProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
-                            <motion.li variants={itemVariants}>{(option.recommendedForEcommerce) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
-                            <motion.li variants={itemVariants}>{(option.clickfraudPpcProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
-                            <motion.li variants={itemVariants}>{(option.reactiveServerMonitoring) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
-                            <motion.li variants={itemVariants}>{(option.regularSecurityPatching) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
-                            <motion.li variants={itemVariants}>{(option.threatProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
-                            {/* <motion.li variants={itemVariants}>{(option.http2EnabledServers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li> */}
+                            <motion.li variants={featureVariants}>{(option.freeSslCertificate) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                            <motion.li variants={featureVariants} className="font-semibold font-display lg:text-base">{option.backups}</motion.li>
+                            <motion.li variants={featureVariants} className="font-semibold font-display lg:text-base">{option.uptime}</motion.li>
+                            <motion.li variants={featureVariants}>{(option.unlimitedVisitors) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                            <motion.li variants={featureVariants}>{(option.dedicatedHighAvailabilityArchitecture) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                            <motion.li variants={featureVariants}>{(option.protectedNameservers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                            <motion.li variants={featureVariants}>{(option.dedicatedDdosProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                            <motion.li variants={featureVariants}>{(option.recommendedForEcommerce) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                            <motion.li variants={featureVariants}>{(option.clickfraudPpcProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                            <motion.li variants={featureVariants}>{(option.reactiveServerMonitoring) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                            <motion.li variants={featureVariants}>{(option.regularSecurityPatching) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                            <motion.li variants={featureVariants}>{(option.threatProtection) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li>
+                            {/* <motion.li variants={featureVariants}>{(option.http2EnabledServers) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" />}</motion.li> */}
                           </motion.ul>
                           
                         </div>
