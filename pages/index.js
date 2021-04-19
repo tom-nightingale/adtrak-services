@@ -11,8 +11,6 @@ import { fade } from "../lib/transitionHelpers"
 
 export default function Home({ data: {home, site} }) {
 
-  
-
   return (
 
     <Layout>
@@ -30,10 +28,14 @@ export default function Home({ data: {home, site} }) {
           <motion.div variants={fade}>
         
             <Header
+              index={true}
               navLinks={home.heroLinks} 
-              heroImage={home.heroImage}
               heroTitle={home.heroTitle}
+              heroImage={home.heroImage}
               heroBlurb={home.heroBlurb}
+              heroBgColor="bg-primary"
+              heroTextColor="text-white"
+              heroLinks={home.heroLinks}
             />
 
           </motion.div>
@@ -56,26 +58,30 @@ const HOMEPAGE_QUERY = `
       heroTitle
       heroBlurb
       heroImage {
-        responsiveImage(imgixParams: {fm: png, w:900, h:750, crop: entropy, fit: crop, blendMode: luminosity}) {
+        responsiveImage(imgixParams: {fm: png, w:1920, h:796, crop: entropy, fit: crop}) {
           ...responsiveImageFragment
         }
       }
       heroLinks {
         ... on HostingRecord {
+          pageTitle
           heroTitle
           slug
         }
         ... on InternetMarketingRecord {
+          pageTitle
           heroTitle
           slug
         }
         ... on PaidMarketingRecord {
-          slug
+          pageTitle
           heroTitle
+          slug
         }
         ... on WebDesignRecord {
-          slug
+          pageTitle
           heroTitle
+          slug
         }
       }
       seo: _seoMetaTags {

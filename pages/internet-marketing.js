@@ -104,20 +104,24 @@ const HOMEPAGE_QUERY = `
     home {
       heroLinks {
         ... on HostingRecord {
+          pageTitle
           heroTitle
           slug
         }
         ... on InternetMarketingRecord {
+          pageTitle
           heroTitle
           slug
         }
         ... on PaidMarketingRecord {
-          slug
+          pageTitle
           heroTitle
+          slug
         }
         ... on WebDesignRecord {
-          slug
+          pageTitle
           heroTitle
+          slug
         }
       }
     }

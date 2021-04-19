@@ -51,8 +51,8 @@ export default function mobileMenu({navItems}) {
                         return(
                         <motion.div className="mb-6 text-center" key={i} variants={listItem}>
                             <Link href={link.slug} scroll={false}>
-                                <a aria-label={`Go to ${link.heroTitle}`} onClick={() => setOpen(!open)} className={`block text-center no-underline ${currentLink === link.slug ? 'text-secondary-light' : 'text-white' }`}>
-                                    {link.heroTitle}
+                                <a aria-label={`Go to ${link.pageTitle}`} onClick={() => setOpen(!open)} className={`block text-center no-underline ${currentLink === link.slug ? 'text-secondary-light' : 'text-white' }`}>
+                                    {link.pageTitle}
                                 </a>
                             </Link>
                         </motion.div>
