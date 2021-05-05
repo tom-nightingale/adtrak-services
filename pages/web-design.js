@@ -65,32 +65,25 @@ export default function Home({ data: {home, webDesign, site} }) {
             {renderMetaTags(webDesign.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
-        <motion.div
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className="overflow-x-hidden"
-        >  
-          <motion.div variants={fade}>
+        
+        <motion.div variants={fade}>
 
-            <Header
-              navLinks={home.heroLinks} 
-              heroImage={webDesign.heroImage}
-              heroTitle={webDesign.heroTitle}
-              heroBlurb={webDesign.heroBlurb}
-            /> 
+          <Header
+            navLinks={home.heroLinks} 
+            heroImage={webDesign.heroImage}
+            heroTitle={webDesign.heroTitle}
+            heroBlurb={webDesign.heroBlurb}
+          /> 
 
-            <div className="w-full bg-white">
+          <div className="w-full bg-white">
 
-              
-              
-            </div>        
+            
+            
+          </div>        
 
-            <Footer content={webDesign.disclaimer} />
+          <Footer content={webDesign.disclaimer} />
 
-          </motion.div>
-
-        </motion.div>         
+        </motion.div>     
 
         <motion.div className={`modal fixed z-50 p-4 bg-primary text-white text-center transition-all duration-1000 bottom-0 left-0 w-full text-2xs ${modal ? 'opacity-full' : 'opacity-0'}`}>
           <>

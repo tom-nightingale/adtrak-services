@@ -18,27 +18,19 @@ export default function Home({ data: {home, site} }) {
         <Head>
             {renderMetaTags(home.seo.concat(site.faviconMetaTags))} 
         </Head>  
-
-        <motion.div
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className="overflow-x-hidden"
-        >  
-          <motion.div variants={fade}>
-        
-            <Header
-              index={true}
-              navLinks={home.heroLinks} 
-              heroTitle={home.heroTitle}
-              heroImage={home.heroImage}
-              heroBlurb={home.heroBlurb}
-              heroBgColor="bg-primary"
-              heroTextColor="text-white"
-              heroLinks={home.heroLinks}
-            />
-
-          </motion.div>
+         
+        <motion.div variants={fade}>
+      
+          <Header
+            index={true}
+            navLinks={home.heroLinks} 
+            heroTitle={home.heroTitle}
+            heroImage={home.heroImage}
+            heroBlurb={home.heroBlurb}
+            heroBgColor="bg-primary"
+            heroTextColor="text-white"
+            heroLinks={home.heroLinks}
+          />
 
         </motion.div>
         

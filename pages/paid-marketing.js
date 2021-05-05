@@ -32,40 +32,32 @@ export default function Home({ data: {home, paidMarketing, site} }) {
         <Head>
             {renderMetaTags(paidMarketing.seo.concat(site.faviconMetaTags))} 
         </Head>  
+        
+        <motion.div variants={fade}>
 
-        <motion.div
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className="overflow-x-hidden"
-        >  
-          <motion.div variants={fade}>
+          <Header
+            navLinks={home.heroLinks} 
+            heroImage={paidMarketing.heroImage}
+            heroTitle={paidMarketing.heroTitle}
+            heroBlurb={paidMarketing.heroBlurb}
+          />  
 
-            <Header
-              navLinks={home.heroLinks} 
-              heroImage={paidMarketing.heroImage}
-              heroTitle={paidMarketing.heroTitle}
-              heroBlurb={paidMarketing.heroBlurb}
-            />  
+          <div className="w-full bg-white">
 
-            <div className="w-full bg-white">
+            
+            
+          </div>        
 
-              
-              
-            </div>        
-
-            <Footer content={paidMarketing.disclaimer} />
-
-          </motion.div>
+          <Footer content={paidMarketing.disclaimer} />
 
         </motion.div>
 
-        <motion.div className={`modal fixed z-50 p-4 bg-primary text-white text-center transition-all duration-1000 bottom-0 left-0 w-full text-2xs ${modal ? 'opacity-full' : 'opacity-0'}`}>
-          <>
-            <button className="absolute top-4 right-4" onClick={() => handleClose()}>Close</button>
-            <p className="modal-content">...</p>
-          </>
-        </motion.div>
+      <motion.div className={`modal fixed z-50 p-4 bg-primary text-white text-center transition-all duration-1000 bottom-0 left-0 w-full text-2xs ${modal ? 'opacity-full' : 'opacity-0'}`}>
+        <>
+          <button className="absolute top-4 right-4" onClick={() => handleClose()}>Close</button>
+          <p className="modal-content">...</p>
+        </>
+      </motion.div>
 
     </Layout>
 
