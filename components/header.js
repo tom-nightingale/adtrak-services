@@ -93,7 +93,7 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
 
             {heroLinks &&
               <Container>
-                <div className="flex flex-wrap mt-8 lg:mt-20">
+                <div className="flex flex-wrap justify-center mt-8 lg:mt-20">
                   {heroLinks.map((item, i) => {
                     return(
                       <div className="flex flex-wrap w-full p-4 sm:w-1/2 md:w-1/4" key={i}>
