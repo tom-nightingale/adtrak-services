@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'jit',
   purge: {
       content: ['./pages/**/*.js', './components/**/*.js'],
       options: {
@@ -74,8 +75,10 @@ module.exports = {
         }
       },
       spacing: {
+        30: "7.85rem",
         38: "8.9rem",
         39: "9.275rem",
+        41: "9.9rem",
         44: "11.1rem",
         45: "11.25rem",
         50: "12.4rem",

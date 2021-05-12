@@ -84,7 +84,7 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
                             animate="visible"
                             variants={tierVariants}
                             transition={{duration: .5, delay: 2}}
-                            className="flex flex-col items-center leading-snug text-center text-white -mt-44 sm:-mt-50 2xl:-mt-86 lg:-mt-84 4xl:-mt-87 rounded-t-4xl bg-secondary">
+                            className="flex flex-col items-center leading-snug text-center text-white mt-[-198px] lg:mt-[-340px] xl:mt-[-362px] rounded-t-4xl bg-secondary">
                             
                             <p className="relative flex flex-wrap items-center px-4 py-2 -mt-4 font-light rounded-full text-2xs bg-secondary-light text-secondary-dark">
                               <img className="block mx-auto lg:-mt-1 lg:mr-2 lg:inline-block" src="images/icon-star.svg" width={15} height={18} alt="Most Popular" />
@@ -110,7 +110,7 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
                             animate="visible"
                             variants={tierVariants}
                             transition={{duration: .5, delay: 2.5}}
-                            className="flex flex-col items-center leading-snug text-center bg-white rounded-tl-none -mt-38 lg:-mt-62 2xl:-mt-62 text-secondary-dark rounded-t-4xl">
+                            className="flex flex-col items-center leading-snug text-center bg-white mt-[-142px] lg:mt-[-245px] xl:mt-[-246px] rounded-tl-none text-secondary-dark rounded-t-4xl">
                             
                             <div className="w-full py-6">
                               <p className="px-2 leading-tight text-center xs:px-8 md:px-12 lg:px-2">

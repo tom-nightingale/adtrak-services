@@ -55,7 +55,7 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
             </Container>   
           </div>        
         
-        <header className={`relative z-10 p-8 pt-32 pb-64 overflow-hidden ${heroBgColor ? heroBgColor : 'bg-secondary-dark' } ${headerModifiers}`}>
+        <header className={`relative z-10 p-8 pt-32 pb-[470px] overflow-hidden ${heroBgColor ? heroBgColor : 'bg-secondary-dark' } ${headerModifiers}`}>
             
             {!index && heroImage &&
               <motion.div
@@ -100,7 +100,7 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
                         <Link href={item.slug} scroll={false}>
                           <a className="flex flex-col justify-center w-full p-4 leading-snug text-center transition-all duration-500 bg-white rounded-2xl lg:text-lg sm:text-left 2xl:p-12 sm:p-8 xl:text-xl font-display text-secondary-dark hover:no-underline hover:text-primary">
                             <div className="lg:w-1/2">
-                              {item.heroTitle}
+                              {item.pageTitle}
                             </div>
                           </a>
                         </Link>

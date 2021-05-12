@@ -85,7 +85,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                           animate="visible"
                           variants={tierVariants}
                           transition={{duration: .5, delay: 2.5}}
-                          className={`flex flex-col items-center leading-snug text-center bg-white ${tier.mostPopular ? '-mt-38 lg:-mt-45 rounded-t-4xl' : '-mt-38 lg:-mt-39 2xl:-mt-39'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 5 ? 'rounded-tr-4xl' : ''}`}>
+                          className={`flex flex-col items-center leading-snug text-center bg-white ${tier.mostPopular ? 'rounded-t-4xl mt-[-180px]' : 'mt-[-128px] lg:mt-[-148px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 5 ? 'rounded-tr-4xl' : ''}`}>
                           
                           <div className={`relative w-full py-6 ${tier.mostPopular ? 'pt-14' : ''} `}>
 

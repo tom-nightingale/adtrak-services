@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
             var colours = ['#FF6B4A', '#3B5CC4', '#12284C', '#ABE8E8'];
             var rand = Math.floor(Math.random() * 3);
             document.body.style.background = colours[rand];
-            console.log(rand);
+            // console.log(rand);
             
             window.setTimeout(() => window.scrollTo(0, 0), 1000)
         }
