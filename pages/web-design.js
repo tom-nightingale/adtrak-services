@@ -32,7 +32,12 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
             {renderMetaTags(webDesign.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
-        
+        <motion.div
+          initial="initial"
+          animate="enter"
+          exit="exit"
+        > 
+
         <motion.div variants={fade}>
 
           <Header
@@ -42,6 +47,7 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
             heroBlurb={webDesign.heroBlurb}
             heroBgColor="bg-primary"
             heroTextColor="text-white"
+            heroGradientHex="255, 107, 74"
           /> 
 
           <div className="w-full bg-white">
@@ -152,6 +158,8 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
             <p className="modal-content">...</p>
           </>
         </motion.div>
+
+      </motion.div>
 
     </Layout>
 

@@ -33,7 +33,12 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
             {renderMetaTags(internetMarketing.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
-        
+        <motion.div
+          initial="initial"
+          animate="enter"
+          exit="exit"
+        > 
+
         <motion.div variants={fade}>
 
           <Header
@@ -163,6 +168,9 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
             <p className="modal-content">...</p>
           </>
         </motion.div>
+        
+
+      </motion.div>
 
     </Layout>
 

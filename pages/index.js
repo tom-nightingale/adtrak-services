@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Head from 'next/head'
 import { request } from "../lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
@@ -18,19 +17,27 @@ export default function Home({ data: {home, site} }) {
         <Head>
             {renderMetaTags(home.seo.concat(site.faviconMetaTags))} 
         </Head>  
+
+        <motion.div
+          initial="initial"
+          animate="enter"
+          exit="exit"
+        >  
          
-        <motion.div variants={fade}>
-      
-          <Header
-            index={true}
-            navLinks={home.heroLinks} 
-            heroTitle={home.heroTitle}
-            heroImage={home.heroImage}
-            heroBlurb={home.heroBlurb}
-            heroBgColor="bg-primary"
-            heroTextColor="text-white"
-            heroLinks={home.heroLinks}
-          />
+          <motion.div variants={fade}>
+        
+            <Header
+              index={true}
+              navLinks={home.heroLinks} 
+              heroTitle={home.heroTitle}
+              heroImage={home.heroImage}
+              heroBlurb={home.heroBlurb}
+              heroBgColor="bg-primary"
+              heroTextColor="text-white"
+              heroLinks={home.heroLinks}
+            />
+
+          </motion.div>
 
         </motion.div>
         

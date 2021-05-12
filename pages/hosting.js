@@ -32,7 +32,12 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
             {renderMetaTags(hosting.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
-        
+        <motion.div
+          initial="initial"
+          animate="enter"
+          exit="exit"
+        > 
+
         <motion.div variants={fade}>
 
           <Header
@@ -41,7 +46,7 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
             heroTitle={hosting.heroTitle}
             heroBlurb={hosting.heroBlurb}
             heroGradientHex="18, 40, 76"
-            headerModifiers="pb-116"
+            headerModifiers=""
           />
 
           <div className="w-full bg-white">
@@ -172,6 +177,8 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
           </motion.div>
 
         </motion.div>
+
+      </motion.div>
 
     </Layout>
 

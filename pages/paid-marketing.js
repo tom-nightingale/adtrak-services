@@ -32,6 +32,12 @@ export default function Home({ data: {home, paidMarketing, site} }) {
         <Head>
             {renderMetaTags(paidMarketing.seo.concat(site.faviconMetaTags))} 
         </Head>  
+
+        <motion.div
+          initial="initial"
+          animate="enter"
+          exit="exit"
+        > 
         
         <motion.div variants={fade}>
 
@@ -40,6 +46,7 @@ export default function Home({ data: {home, paidMarketing, site} }) {
             heroImage={paidMarketing.heroImage}
             heroTitle={paidMarketing.heroTitle}
             heroBlurb={paidMarketing.heroBlurb}
+            heroGradientHex="18, 40, 76"
           />  
 
           <div className="w-full bg-white">
@@ -52,11 +59,13 @@ export default function Home({ data: {home, paidMarketing, site} }) {
 
         </motion.div>
 
-      <motion.div className={`modal fixed z-50 p-4 bg-primary text-white text-center transition-all duration-1000 bottom-0 left-0 w-full text-2xs ${modal ? 'opacity-full' : 'opacity-0'}`}>
-        <>
-          <button className="absolute top-4 right-4" onClick={() => handleClose()}>Close</button>
-          <p className="modal-content">...</p>
-        </>
+        <motion.div className={`modal fixed z-50 p-4 bg-primary text-white text-center transition-all duration-1000 bottom-0 left-0 w-full text-2xs ${modal ? 'opacity-full' : 'opacity-0'}`}>
+          <>
+            <button className="absolute top-4 right-4" onClick={() => handleClose()}>Close</button>
+            <p className="modal-content">...</p>
+          </>
+        </motion.div>
+
       </motion.div>
 
     </Layout>
