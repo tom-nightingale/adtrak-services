@@ -10,6 +10,8 @@ import Footer from '../components/footer'
 import Container from '../components/container'
 import IconThumb from '../components/iconThumb'
 import { motion } from 'framer-motion'
+import Feature from "../components/feature";
+import MostPopular from "../components/most-popular";
 
 
 export default function Home({ data: {home, internetMarketing, imTiers, site} }) {
@@ -90,23 +92,20 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                           animate="visible"
                           variants={tierVariants}
                           transition={{duration: .5, delay: 2.5}}
-                          className={`flex flex-col items-center leading-snug text-center bg-white ${tier.mostPopular ? 'rounded-t-4xl mt-[-180px]' : 'mt-[-128px] lg:mt-[-148px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 5 ? 'rounded-tr-4xl' : ''}`}>
+                          className={`flex flex-col items-center leading-snug text-center bg-white ${tier.mostPopular ? 'rounded-t-4xl mt-[-160px] lg:mt-[-173px]' : 'mt-[-128px] lg:mt-[-141px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 5 ? 'rounded-tr-4xl' : ''} `}>
                           
                           <div className={`relative w-full py-6 ${tier.mostPopular ? 'pt-14' : ''} `}>
 
                             {tier.mostPopular &&
-                              <p className="absolute flex flex-wrap items-center justify-center px-4 py-2 font-light text-center transform -translate-x-1/2 rounded-full xl:w-4/5 -top-4 left-1/2 text-2xs bg-secondary-light text-secondary-dark">
-                                <img className="block mx-auto xl:mx-0 xl:mr-2 lg:-mt-1 lg:inline-block" src="images/icon-star.svg" width={15} height={18} alt="Most Popular" />
-                                <span className="hidden xl:inline-block">Most Popular!</span>
-                              </p>
+                              <MostPopular />
                             }
                           
                             <p className="px-2 leading-tight text-center xs:px-8">
-                              <span className="text-xs font-semibold opacity-50 lg:text-lg font-display">{tier.title}</span>
+                              <span className="text-xs font-semibold opacity-50 xl:text-lg font-display">{tier.title}</span>
                             </p>
                             <p className="flex flex-col mt-4 leading-tight">
-                              <span className="text-lg font-semibold leading-none lg:text-xl font-display">£{tier.price}</span>
-                              <span className="text-xs font-light opacity-50">{tier.nickname}</span>
+                              <span className="text-lg font-semibold leading-none xl:text-xl font-display">£{tier.price}</span>
+                              <span className="font-light opacity-50 text-2xs">{tier.nickname}</span>
                             </p>
                           </div>
                           
@@ -114,33 +113,34 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                         
 
                         <motion.ul
-                          className={tier.mostPopular ? "shadow-xl rounded-3xl text-xs relative z-40" : "text-xs"}
+                          className={` ${i+1 <= imTiers.length ? 'border-l border-gray-200' : '' } ${i == 4 ? 'border-l-0' : '' } ${tier.mostPopular ? "shadow-xl rounded-3xl text-xs relative z-40 border-l-0" : "text-xs"} `}
                           initial="hidden"
                           animate="visible"
                           variants={listVariants}
                         >
-                          <motion.li variants={featureVariants}>{(tier.healthChecks) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.analyticsAnalysis) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.algorithmCompliance) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.citationBuildingMaintenance) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.googleMyBusiness) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.quarterlyPerformanceReview) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants} className="font-display lg:text-base">{tier.rankTracking}</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.ongoingOptimisation) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.backlinkProfileAnalysis) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.advancedLinkBuilding) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.articleManagement) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.reviewsManagement) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.siteSpeedManagement) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.uxAnalysis) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.cro) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.digitalPr) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.organicSocialMedia) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.paidSocialMedia) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.graphicDesign) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.photography) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.videography) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.animation) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+
+                          <Feature feature={tier.healthChecks} />
+                          <Feature feature={tier.analyticsAnalysis} />
+                          <Feature feature={tier.algorithmCompliance} />
+                          <Feature feature={tier.citationBuildingMaintenance} />
+                          <Feature feature={tier.googleMyBusiness} />
+                          <Feature feature={tier.quarterlyPerformanceReview} />
+                          <Feature feature={tier.rankTracking} text={true} />
+                          <Feature feature={tier.ongoingOptimisation} />
+                          <Feature feature={tier.backlinkProfileAnalysis} />
+                          <Feature feature={tier.advancedLinkBuilding} />
+                          <Feature feature={tier.articleManagement} />
+                          <Feature feature={tier.reviewsManagement} />
+                          <Feature feature={tier.siteSpeedManagement} />
+                          <Feature feature={tier.uxAnalysis} />
+                          <Feature feature={tier.cro} />
+                          <Feature feature={tier.digitalPr} />
+                          <Feature feature={tier.organicSocialMedia} />
+                          <Feature feature={tier.paidSocialMedia} />
+                          <Feature feature={tier.graphicDesign} />
+                          <Feature feature={tier.photography} />
+                          <Feature feature={tier.videography} />
+                          <Feature feature={tier.animation} />
 
                         </motion.ul>
                         

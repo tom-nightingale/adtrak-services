@@ -2,16 +2,24 @@ import { motion } from "framer-motion";
 import { featureVariants } from "../lib/transitionHelpers"
 import IconThumb from '../components/iconThumb'
 
-export default function Feature({ feature }) {
+export default function Feature({ feature, text }) {
     return (
         <motion.li 
-        className="" 
+        className={text ? 'font-display lg:text-base' : ''} 
         variants={featureVariants}
         >
-            {(feature) ? 
-                <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> 
-              : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> 
+            {text &&
+                feature
             }
+
+            {!text && feature &&
+                <IconThumb classes="bg-positive border-positive-dark" outcome="positive" />
+            }
+
+            {!text && !feature &&
+                <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> 
+            }
+            
         </motion.li>
     )
 }

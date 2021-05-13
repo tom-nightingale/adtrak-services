@@ -6,11 +6,11 @@ import Layout from '../components/layout'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Container from '../components/container'
-import IconThumb from '../components/iconThumb'
 import { motion } from 'framer-motion'
 import { renderMetaTags } from "react-datocms";
 import { fade, tierVariants, listVariants, featureVariants } from "../lib/transitionHelpers"
 import Feature from "../components/feature";
+import MostPopular from "../components/most-popular";
 
 export default function Home({ data: {home, webDesign, webTiers, site} }) {
 
@@ -95,10 +95,7 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
                           <div className={`relative w-full py-6 ${tier.mostPopular ? 'py-14' : ''} `}>
 
                             {tier.mostPopular &&
-                              <p className="absolute flex flex-wrap items-center justify-center px-4 py-2 font-light text-center transform -translate-x-1/2 rounded-full xl:w-4/5 -top-4 left-1/2 text-2xs bg-secondary-light text-secondary-dark">
-                                <img className="block mx-auto xl:mx-0 xl:mr-2 lg:-mt-1 lg:inline-block" src="images/icon-star.svg" width={15} height={18} alt="Most Popular" />
-                                <span className="hidden xl:inline-block">Most Popular!</span>
-                              </p>
+                              <MostPopular />
                             }
                           
                             <p className="px-2 leading-tight text-center xs:px-8">
