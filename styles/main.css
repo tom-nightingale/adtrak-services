@@ -1,4 +1,36 @@
 /* @import '_typography.css'; */
+@font-face {
+  font-family: 'Mont';
+  src: url('../public/fonts/Mont-SemiBold.woff') format('woff'),
+      url('../public/fonts/Mont-SemiBold.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AribauGrotesk';
+  src: url('../public/fonts/AribauGrotesk-Bd.woff') format('woff'),
+      url('../public/fonts/AribauGrotesk-Bd.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'AribauGrotesk';
+  src: url('../public/fonts/AribauGrotesk-Rg.woff') format('woff'),
+      url('../public/fonts/AribauGrotesk-Rg.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'AribauGrotesk';
+  src: url('../public/fonts/AribauGrotesk-Light.woff') format('woff'),
+      url('../public/fonts/AribauGrotesk-Light.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 300;
+}
 
 /* Tailwind base/components */
 @import 'tailwindcss/base';
@@ -8,7 +40,7 @@
 @import 'tailwindcss/utilities';
 
 /* Default Typography Styles */
-@import '_fonts.css';
+/* @import '_fonts.css'; */
 
 /* Custom */
 html {
