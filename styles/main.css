@@ -1,4 +1,11 @@
-/* @import '_typography.css'; */
+
+/* Tailwind base/components */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+/* Tailwind Utilities */
+@import 'tailwindcss/utilities';
+
 @font-face {
   font-family: 'Mont';
   src: url('../public/fonts/Mont-SemiBold.woff') format('woff'),
@@ -32,15 +39,8 @@
   font-weight: 300;
 }
 
-/* Tailwind base/components */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
 
-/* Tailwind Utilities */
-@import 'tailwindcss/utilities';
 
-/* Default Typography Styles */
-/* @import '_fonts.css'; */
 
 /* Custom */
 html {
