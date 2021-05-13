@@ -5,7 +5,10 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <meta name="robots" content="noindex" />
+          <meta name="googlebot" content="noindex" />
+        </Head>
         <body>
           <Main />
           <NextScript />
