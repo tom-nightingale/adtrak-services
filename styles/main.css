@@ -1,6 +1,3 @@
-/* Default Typography Styles */
-@import '_fonts.css';
-
 /* @import '_typography.css'; */
 
 /* Tailwind base/components */
@@ -9,6 +6,9 @@
 
 /* Tailwind Utilities */
 @import 'tailwindcss/utilities';
+
+/* Default Typography Styles */
+@import '_fonts.css';
 
 /* Custom */
 html {
