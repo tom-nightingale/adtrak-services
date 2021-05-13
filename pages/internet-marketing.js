@@ -6,9 +6,9 @@ import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
 import { fade, tierVariants, listVariants, featureVariants } from "../lib/transitionHelpers"
 import Layout from '../components/layout'
 import Header from '../components/header'
+import Hero from '../components/hero'
 import Footer from '../components/footer'
 import Container from '../components/container'
-import IconThumb from '../components/iconThumb'
 import { motion } from 'framer-motion'
 import Feature from "../components/feature";
 import MostPopular from "../components/most-popular";
@@ -35,6 +35,8 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
             {renderMetaTags(internetMarketing.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
+        <Header navLinks={home.heroLinks} />
+
         <motion.div
           initial="initial"
           animate="enter"
@@ -43,7 +45,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
 
         <motion.div variants={fade}>
 
-          <Header
+          <Hero
             navLinks={home.heroLinks} 
             heroImage={internetMarketing.heroImage}
             heroTitle={internetMarketing.heroTitle}

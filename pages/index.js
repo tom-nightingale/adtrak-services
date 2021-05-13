@@ -3,6 +3,7 @@ import { request } from "../lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
 import Layout from '../components/layout'
 import Header from '../components/header'
+import Hero from '../components/hero'
 import { renderMetaTags } from "react-datocms";
 import { motion } from "framer-motion"
 import { fade } from "../lib/transitionHelpers"
@@ -18,6 +19,8 @@ export default function Home({ data: {home, site} }) {
             {renderMetaTags(home.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
+        <Header navLinks={home.heroLinks} />
+
         <motion.div
           initial="initial"
           animate="enter"
@@ -26,7 +29,7 @@ export default function Home({ data: {home, site} }) {
          
           <motion.div variants={fade}>
         
-            <Header
+            <Hero
               index={true}
               navLinks={home.heroLinks} 
               heroTitle={home.heroTitle}

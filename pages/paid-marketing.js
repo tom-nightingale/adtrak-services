@@ -4,6 +4,7 @@ import { request } from "../lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
 import Layout from '../components/layout'
 import Header from '../components/header'
+import Hero from '../components/hero'
 import Footer from '../components/footer'
 import Container from '../components/container'
 import IconThumb from '../components/iconThumb'
@@ -33,6 +34,8 @@ export default function Home({ data: {home, paidMarketing, site} }) {
             {renderMetaTags(paidMarketing.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
+        <Header navLinks={home.heroLinks} />
+
         <motion.div
           initial="initial"
           animate="enter"
@@ -41,7 +44,7 @@ export default function Home({ data: {home, paidMarketing, site} }) {
         
         <motion.div variants={fade}>
 
-          <Header
+          <Hero
             navLinks={home.heroLinks} 
             heroImage={paidMarketing.heroImage}
             heroTitle={paidMarketing.heroTitle}
