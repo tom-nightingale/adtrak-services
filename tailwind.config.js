@@ -2,13 +2,6 @@ module.exports = {
   mode: 'jit',
   purge: {
       content: ['./pages/**/*.js', './components/**/*.js'],
-      options: {
-        safelist: [
-            /^wp/,
-            'bg-positive',
-            'bg-negative',
-        ],
-    },
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
