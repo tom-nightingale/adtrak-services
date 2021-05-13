@@ -10,6 +10,7 @@ import IconThumb from '../components/iconThumb'
 import { motion } from 'framer-motion'
 import { renderMetaTags } from "react-datocms";
 import { fade, tierVariants, listVariants, featureVariants } from "../lib/transitionHelpers"
+import Feature from "../components/feature";
 
 export default function Home({ data: {home, webDesign, webTiers, site} }) {
 
@@ -89,7 +90,7 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
                           animate="visible"
                           variants={tierVariants}
                           transition={{duration: .5, delay: 2.5}}
-                          className={`flex flex-col items-center leading-snug text-center bg-white ${tier.mostPopular ? 'rounded-t-4xl mt-[-152px] 3xl:mt-[-174px] bg-secondary-dark text-white' : 'mt-[-88px] 3xl:mt-[-110px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 3 ? 'rounded-tr-4xl' : ''}`}>
+                          className={`flex flex-col items-center leading-snug text-center bg-white ${tier.mostPopular ? 'rounded-t-4xl mt-[-157px] 3xl:mt-[-168px] bg-secondary-dark text-white' : 'mt-[-93px] 3xl:mt-[-105px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 3 ? 'rounded-tr-4xl' : ''}`}>
                           
                           <div className={`relative w-full py-6 ${tier.mostPopular ? 'py-14' : ''} `}>
 
@@ -112,26 +113,26 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
                         
 
                         <motion.ul
-                          className={tier.mostPopular ? "shadow-xl rounded-3xl text-xs relative z-40" : "text-xs"}
+                          className={` ${i+1 < webTiers.length ? 'border-l border-gray-200' : '' }  ${tier.mostPopular ? "shadow-xl rounded-3xl text-xs relative z-40 border-l-0" : "text-xs "} `} 
                           initial="hidden"
                           animate="visible"
                           variants={listVariants}
                         >
-                          <motion.li variants={featureVariants}>{(tier.dedicatedAccountManage) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.uxWorkshop) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.customSitemap) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.contentManagementSystem) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.freeSslCertificate) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.freeSeoSetup) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.professionalCopywriting) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.changeImagesandColours) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.contactAndQuickQuoteForms) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.bespokeDesign) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.advancedFeaturesIntegrations) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.layoutAmendments) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.secureOnlinePayments) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.responsiveDesignOptimisedForMobileDevices) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
-                          <motion.li variants={featureVariants}>{(tier.socialMediaIntegration) ? <IconThumb classes="bg-positive border-positive-dark" outcome="positive" /> : <IconThumb classes="bg-negative border-negative-dark" outcome="negative" /> }</motion.li>
+                          <Feature feature={tier.dedicatedAccountManager} />
+                          <Feature feature={tier.uxWorkshop} />
+                          <Feature feature={tier.customSitemap} />
+                          <Feature feature={tier.contentManagementSystem} />
+                          <Feature feature={tier.freeSslCertificate} />
+                          <Feature feature={tier.freeSeoSetup} />
+                          <Feature feature={tier.professionalCopywriting} />
+                          <Feature feature={tier.changeImagesandColours} />
+                          <Feature feature={tier.contactAndQuickQuoteForms} />
+                          <Feature feature={tier.bespokeDesign} />
+                          <Feature feature={tier.advancedFeaturesIntegrations} />
+                          <Feature feature={tier.layoutAmendments} />
+                          <Feature feature={tier.secureOnlinePayments} />
+                          <Feature feature={tier.responsiveDesignOptimisedForMobileDevices} />
+                          <Feature feature={tier.socialMediaIntegration} />
                         </motion.ul>
                         
                       </div>

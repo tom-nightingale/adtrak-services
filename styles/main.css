@@ -41,7 +41,7 @@ img {
 
 .hosting-options {
   li {
-    @apply flex items-center justify-center h-20 p-4 text-center border-b border-gray-100;
+    @apply flex items-center justify-center h-20 p-4 text-center border-b border-gray-200;
 
     &:nth-of-type(even) {
       @apply relative bg-gray-100;
