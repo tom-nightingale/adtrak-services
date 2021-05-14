@@ -186,11 +186,6 @@ const HOMEPAGE_QUERY = `
           heroTitle
           slug
         }
-        ... on PaidMarketingRecord {
-          pageTitle
-          heroTitle
-          slug
-        }
         ... on WebDesignRecord {
           pageTitle
           heroTitle
