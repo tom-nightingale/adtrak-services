@@ -31,8 +31,11 @@
   font-weight: 300;
 }
 
+/* purgecss start ignore */
 @tailwind base;
 @tailwind components;
+/* purgecss end ignore */
+
 @tailwind utilities;
 
 
