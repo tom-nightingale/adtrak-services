@@ -119,20 +119,22 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
                           variants={listVariants}
                         >
                           <Feature feature={tier.dedicatedAccountManager} />
-                          <Feature feature={tier.uxWorkshop} />
-                          <Feature feature={tier.customSitemap} />
                           <Feature feature={tier.contentManagementSystem} />
                           <Feature feature={tier.freeSslCertificate} />
                           <Feature feature={tier.freeSeoSetup} />
                           <Feature feature={tier.professionalCopywriting} />
-                          <Feature feature={tier.changeImagesandColours} />
                           <Feature feature={tier.contactAndQuickQuoteForms} />
+                          <Feature feature={tier.responsiveDesignOptimisedForMobileDevices} />
+                          <Feature feature={tier.changeImagesAndColours} />
+
+                          <Feature feature={tier.customSitemap} />
+                          <Feature feature={tier.layoutAmendments} />
+
+                          <Feature feature={tier.uxWorkshop} />
                           <Feature feature={tier.bespokeDesign} />
                           <Feature feature={tier.advancedFeaturesIntegrations} />
-                          <Feature feature={tier.layoutAmendments} />
-                          <Feature feature={tier.secureOnlinePayments} />
-                          <Feature feature={tier.responsiveDesignOptimisedForMobileDevices} />
                           <Feature feature={tier.socialMediaIntegration} />
+                          <Feature feature={tier.secureOnlinePayments} />
                         </motion.ul>
                         
                       </div>
