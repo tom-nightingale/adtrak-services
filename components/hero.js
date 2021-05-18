@@ -27,11 +27,9 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
 
     return (
         <>
-        <MobileMenu navItems={navLinks} />        
-
-          
+        <MobileMenu navItems={navLinks} />      
         
-        <header className={`relative z-10 p-8 pt-32 pb-[470px] overflow-hidden ${heroBgColor ? heroBgColor : 'bg-secondary-dark' } ${headerModifiers}`}>
+        <header className={`relative z-10 p-8 pt-32 ${index ? 'min-h-screen' : 'pb-[470px]'} overflow-hidden ${heroBgColor ? heroBgColor : 'bg-secondary-dark' } ${headerModifiers}`}>
             
             {!index && heroImage &&
               <motion.div
@@ -69,7 +67,7 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
 
             {heroLinks &&
               <Container>
-                <div className="flex flex-wrap justify-center mt-8 lg:mt-20">
+                <div className="relative z-10 flex flex-wrap justify-center mt-8 lg:mt-20">
                   {heroLinks.map((item, i) => {
                     return(
                       <div className="flex flex-wrap w-full p-4 sm:w-1/2 md:w-1/4" key={i}>
@@ -94,8 +92,8 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
                 animate="visible"
                 variants={indexHeroImageVariants}
                 transition={{duration: 2.5}}
-                className="">
-                  <Image width={900} height={750} pictureClassName="" alt="Hosting with Adtrak" className="" data={heroImage.responsiveImage} /> 
+                className="absolute left-0 top-2/3">
+                  <Image width={900} height={750} alt="Hosting with Adtrak" data={heroImage.responsiveImage} /> 
               </motion.div>
             }
                 

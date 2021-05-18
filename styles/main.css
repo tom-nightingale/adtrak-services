@@ -47,7 +47,7 @@ html {
 
 html,
 body {
-  @apply font-sans antialiased leading-relaxed text-secondary-dark
+  @apply min-h-screen font-sans antialiased leading-relaxed text-secondary-dark;
 }
 
 * {
