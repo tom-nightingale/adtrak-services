@@ -51,7 +51,7 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
             heroTitle={hosting.heroTitle}
             heroBlurb={hosting.heroBlurb}
             heroGradientHex="18, 40, 76"
-            headerModifiers=""
+            heroModifiers="pb-[470px]"
           />
 
           <div className="w-full bg-white">
@@ -138,7 +138,7 @@ export default function Home({ data: {home, hosting, site, hostingOptions} }) {
                         )}
 
                         <motion.ul
-                          className={(i == 0) ? "shadow-xl rounded-3xl text-xs relative z-40" : "text-xs"}
+                          className={(i == 0) ? "shadow-xl rounded-3xl text-xs relative z-40 pb-4" : "text-xs"}
                           initial="hidden"
                           animate="visible"
                           variants={listVariants}

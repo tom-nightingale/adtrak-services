@@ -5,7 +5,7 @@ import Container from './container'
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-export default function Header({ index, navLinks, heroImage, heroTitle, heroBlurb, heroLinks, heroTextColor, heroBgColor, heroGradientHex, headerModifiers}) {
+export default function Header({ index, navLinks, heroImage, heroTitle, heroBlurb, heroLinks, heroTextColor, heroBgColor, heroGradientHex, heroModifiers}) {
 
     const router = useRouter();
     const currentLink = router.pathname.replace('/', '');
@@ -29,7 +29,7 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
         <>
         <MobileMenu navItems={navLinks} />      
         
-        <header className={`relative z-10 p-8 pt-32 ${index ? 'min-h-screen' : 'pb-[470px]'} overflow-hidden ${heroBgColor ? heroBgColor : 'bg-secondary-dark' } ${headerModifiers}`}>
+        <header className={`relative z-10 p-8 pt-32 ${index ? 'min-h-screen' : ''} overflow-hidden ${heroBgColor ? heroBgColor : 'bg-secondary-dark' } ${heroModifiers}`}>
             
             {!index && heroImage &&
               <motion.div

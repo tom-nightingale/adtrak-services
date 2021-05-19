@@ -52,6 +52,7 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
             heroBgColor="bg-primary"
             heroTextColor="text-white"
             heroGradientHex="255, 107, 74"
+            heroModifiers="pb-[320px]"
           /> 
 
           <div className="w-full bg-white">
@@ -93,7 +94,7 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
                           animate="visible"
                           variants={tierVariants}
                           transition={{duration: .5, delay: 2.5}}
-                          className={`flex flex-col items-center leading-snug text-center bg-white ${tier.mostPopular ? 'rounded-t-4xl mt-[-157px] 3xl:mt-[-168px] bg-secondary-dark text-white' : 'mt-[-93px] 3xl:mt-[-105px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 3 ? 'rounded-tr-4xl' : ''}`}>
+                          className={`flex flex-col items-center leading-snug text-center bg-white border-l border-b border-gray-200 ${tier.mostPopular ? 'rounded-t-4xl mt-[-158px] 3xl:mt-[-170px] bg-secondary-dark border-l-0 text-white' : 'mt-[-93px] 3xl:mt-[-106px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 3 ? 'rounded-tr-4xl' : ''}`}>
                           
                           <div className={`relative w-full py-6 ${tier.mostPopular ? 'py-14' : ''} `}>
 
@@ -113,7 +114,7 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
                         
 
                         <motion.ul
-                          className={` ${i+1 < webTiers.length ? 'border-l border-gray-200' : '' }  ${tier.mostPopular ? "shadow-xl rounded-3xl text-xs relative z-40 border-l-0" : "text-xs "} `} 
+                          className={`${i+1 < webTiers.length ? 'border-l border-gray-200' : '' }  ${tier.mostPopular ? "shadow-xl rounded-3xl pb-4 text-xs relative z-40 border-l-0" : "text-xs"} `} 
                           initial="hidden"
                           animate="visible"
                           variants={listVariants}

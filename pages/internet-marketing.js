@@ -52,7 +52,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
             heroBlurb={internetMarketing.heroBlurb}
             heroBgColor="bg-secondary"
             heroGradientHex="59, 92, 196"
-            headerModifiers=""
+            heroModifiers="pb-[320px]"
           />        
 
           <div className="w-full bg-white">
@@ -94,7 +94,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                           animate="visible"
                           variants={tierVariants}
                           transition={{duration: .5, delay: 2.5}}
-                          className={`flex flex-col items-center leading-snug text-center bg-white ${tier.mostPopular ? 'rounded-t-4xl mt-[-160px] lg:mt-[-173px]' : 'mt-[-128px] lg:mt-[-141px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 5 ? 'rounded-tr-4xl' : ''} `}>
+                          className={`flex flex-col items-center leading-snug text-center bg-white border-l border-b border-gray-200 ${tier.mostPopular ? 'rounded-t-4xl mt-[-161px] lg:mt-[-174px]' : 'mt-[-129px] lg:mt-[-142px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 5 ? 'rounded-tr-4xl' : ''} `}>
                           
                           <div className={`relative w-full py-6 ${tier.mostPopular ? 'pt-14' : ''} `}>
 
@@ -115,7 +115,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                         
 
                         <motion.ul
-                          className={` ${i+1 <= imTiers.length ? 'border-l border-gray-200' : '' } ${i == 4 ? 'border-l-0' : '' } ${tier.mostPopular ? "shadow-xl rounded-3xl text-xs relative z-40 border-l-0" : "text-xs"} `}
+                          className={` ${i+1 <= imTiers.length ? 'border-l border-gray-200' : '' } ${i == 4 ? 'border-l-0' : '' } ${tier.mostPopular ? "shadow-xl rounded-3xl pb-4 text-xs relative z-40 border-l-0" : "text-xs"} overflow-hidden`}
                           initial="hidden"
                           animate="visible"
                           variants={listVariants}
