@@ -13,7 +13,7 @@ import FancyLink from '../components/fancyLink'
 import { motion } from 'framer-motion'
 import { renderMetaTags } from "react-datocms";
 import { fade } from "../lib/transitionHelpers"
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/client';
 
 export default function Home({ data: {home, paidMarketing, site} }) {
 

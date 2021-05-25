@@ -13,7 +13,7 @@ import { renderMetaTags } from "react-datocms";
 import { fade, tierVariants, listVariants, featureVariants } from "../lib/transitionHelpers"
 import Feature from "../components/feature";
 import MostPopular from "../components/most-popular";
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/client';
 
 export default function Home({ data: {home, webDesign, webTiers, site} }) {
 

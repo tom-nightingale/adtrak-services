@@ -14,7 +14,7 @@ import IconThumb from '../components/iconThumb'
 import { motion } from 'framer-motion'
 import Feature from "../components/feature";
 import MostPopular from "../components/most-popular";
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/client';
 
 export default function Home({ data: {home, hosting, site, hostingOptions} }) {
 
