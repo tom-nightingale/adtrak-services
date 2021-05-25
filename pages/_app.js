@@ -2,8 +2,10 @@ import { useEffect, React } from 'react';
 import '../styles/main.css'
 import { AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
+import { Provider } from 'next-auth/client';
 
 export default function App({ Component, pageProps }) {
+    const { session } = pageProps;
     const router = useRouter();
 
     useEffect(() => {
@@ -19,8 +21,12 @@ export default function App({ Component, pageProps }) {
     }, [router.events])
 
     return (
-        <AnimatePresence exitBeforeEnter>
-            <Component {...pageProps} key={router.asPath} />
-        </AnimatePresence>
+        <Provider session={session}>
+
+            <AnimatePresence exitBeforeEnter>
+                <Component {...pageProps} key={router.asPath} />
+            </AnimatePresence>
+            
+        </Provider>
     )
 }
