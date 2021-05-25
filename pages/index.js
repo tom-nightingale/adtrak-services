@@ -4,6 +4,7 @@ import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
 import Layout from '../components/layout'
 import Header from '../components/header'
 import Hero from '../components/hero'
+import Login from '../components/login'
 import { renderMetaTags } from "react-datocms";
 import { motion } from "framer-motion"
 import { fade } from "../lib/transitionHelpers"
@@ -35,25 +36,7 @@ export default function Home({ data: {home, site} }) {
           <motion.div variants={fade}>
 
             {!session && (
-
-              <div className="flex flex-col items-center justify-center w-full min-h-screen text-white bg-primary">
-                      
-                <img className="mx-auto mb-8" src="images/adtrak-logo.svg" width={160} height={35} alt="Adtrak Media Limited" /> 
-                
-                <p>Please login to see our services.</p>
-                
-                  <a
-                    href="/api/auth/signin"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      signIn();
-                    }}
-                  >
-                    <button className="signInButton">Sign in</button>
-                  </a>
-
-              </div>
-
+              <Login />
             )}     
 
             {session && (

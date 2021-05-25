@@ -5,6 +5,7 @@ import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
 import Layout from '../components/layout'
 import Header from '../components/header'
 import Hero from '../components/hero'
+import Login from '../components/login'
 import Footer from '../components/footer'
 import Container from '../components/container'
 import IconThumb from '../components/iconThumb'
@@ -12,8 +13,11 @@ import FancyLink from '../components/fancyLink'
 import { motion } from 'framer-motion'
 import { renderMetaTags } from "react-datocms";
 import { fade } from "../lib/transitionHelpers"
+import { signIn, signOut, useSession } from 'next-auth/client';
 
 export default function Home({ data: {home, paidMarketing, site} }) {
+
+  const [session, loading] = useSession();
 
   const [modal, showModal] = useState(false);
 
@@ -34,7 +38,9 @@ export default function Home({ data: {home, paidMarketing, site} }) {
             {renderMetaTags(paidMarketing.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
-        <Header navLinks={home.heroLinks} />
+        {session && (
+          <Header navLinks={home.heroLinks} />
+        )}
 
         <motion.div
           initial="initial"
@@ -44,21 +50,32 @@ export default function Home({ data: {home, paidMarketing, site} }) {
         
         <motion.div variants={fade}>
 
-          <Hero
-            navLinks={home.heroLinks} 
-            heroImage={paidMarketing.heroImage}
-            heroTitle={paidMarketing.heroTitle}
-            heroBlurb={paidMarketing.heroBlurb}
-            heroGradientHex="18, 40, 76"
-          />  
+          {!session && (
+            <Login />
+          )}
 
-          <div className="w-full bg-white">
 
-            
-            
-          </div>        
+          {session && (
+            <>
 
-          <Footer content={paidMarketing.disclaimer} />
+            <Hero
+              navLinks={home.heroLinks} 
+              heroImage={paidMarketing.heroImage}
+              heroTitle={paidMarketing.heroTitle}
+              heroBlurb={paidMarketing.heroBlurb}
+              heroGradientHex="18, 40, 76"
+            />  
+
+            <div className="w-full bg-white">
+
+              
+              
+            </div>        
+
+            <Footer content={paidMarketing.disclaimer} />
+
+          </>
+          )}
 
         </motion.div>
 

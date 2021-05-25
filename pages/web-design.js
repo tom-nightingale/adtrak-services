@@ -5,6 +5,7 @@ import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
 import Layout from '../components/layout'
 import Header from '../components/header'
 import Hero from '../components/hero'
+import Login from '../components/login'
 import Footer from '../components/footer'
 import Container from '../components/container'
 import { motion } from 'framer-motion'
@@ -12,8 +13,11 @@ import { renderMetaTags } from "react-datocms";
 import { fade, tierVariants, listVariants, featureVariants } from "../lib/transitionHelpers"
 import Feature from "../components/feature";
 import MostPopular from "../components/most-popular";
+import { signIn, signOut, useSession } from 'next-auth/client';
 
 export default function Home({ data: {home, webDesign, webTiers, site} }) {
+
+  const [session, loading] = useSession();
 
   const [modal, showModal] = useState(false);
 
@@ -34,7 +38,9 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
             {renderMetaTags(webDesign.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
-        <Header navLinks={home.heroLinks} />
+        {session && (
+          <Header navLinks={home.heroLinks} />
+        )}
 
         <motion.div
           initial="initial"
@@ -44,6 +50,12 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
 
         <motion.div variants={fade}>
 
+          {!session && (
+            <Login />
+          )} 
+
+          {session && (
+            <>
           <Hero
             navLinks={home.heroLinks} 
             heroImage={webDesign.heroImage}
@@ -153,6 +165,9 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
           </div>        
 
           <Footer content={webDesign.disclaimer} />
+          
+          </>
+          )}
 
         </motion.div>     
 
