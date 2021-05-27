@@ -118,7 +118,7 @@ export default function Home({ data: {home, webDesign, webTiers, site} }) {
                               <span className={`text-xs font-semibold 3xl:text-xl font-display ${tier.mostPopular ? 'text-white' : ''} `}>{tier.title}<span className="text-primary">.</span></span>
                             </p>
                             <p className="flex flex-col leading-tight">                             
-                              <span className={`text-xs font-light opacity-50 ${tier.mostPopular ? 'text-white' : ''}`}>Website</span>
+                              <span className={`text-xs font-light opacity-50 ${tier.mostPopular ? 'text-white' : ''}`}>{tier.price}</span>
                             </p>
                           </div>
                           
@@ -231,6 +231,7 @@ const HOMEPAGE_QUERY = `
     webTiers: allWebDesignTiers {
       title
       mostPopular
+      price
       dedicatedAccountManager
       uxWorkshop
       customSitemap

@@ -23,8 +23,11 @@ export default function header({ navLinks }) {
                     {navLinks.map((link, i) => {
                     return(
                         <Link key={i} href={link.slug} scroll={false}>
-                            <a aria-label={`Go to ${link.pageTitle}`} className={`inline-flex items-center p-2 mx-4 text-white transition-all duration-500 group hover:underline  ${currentLink === link.slug ? 'text-secondary-light' : ''}`}>
-                            {link.pageTitle}
+                            <a 
+                                aria-label={`Go to ${link.pageTitle}`} 
+                                className={`inline-flex items-center p-2 mx-4 transition-all duration-500 group hover:underline ${currentLink !=="web-design" && currentLink === link.slug ? 'text-secondary-light' : 'text-white'} ${currentLink ==="web-design" && currentLink === link.slug ? 'text-secondary-dark' : 'text-white'} `}
+                            >
+                                {link.pageTitle}
                             </a>
                         </Link>
                     )
