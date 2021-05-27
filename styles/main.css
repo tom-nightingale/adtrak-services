@@ -140,3 +140,9 @@ img {
       @apply w-9
     }
 }
+
+.content {
+  p {
+    @apply mb-8;
+  }
+}
