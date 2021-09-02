@@ -147,6 +147,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                               <Feature feature={tier.articleManagement} />
                               <Feature feature={tier.reviewsManagement} />
                               <Feature feature={tier.siteSpeedManagement} />
+                              <Feature feature={tier.contentMarketing} />
                               <Feature feature={tier.uxAnalysis} />
                               <Feature feature={tier.cro} />
                               <Feature feature={tier.digitalPr} />
@@ -255,6 +256,7 @@ const HOMEPAGE_QUERY = `
       articleManagement
       reviewsManagement
       siteSpeedManagement
+      contentMarketing
       uxAnalysis
       cro
       digitalPr
