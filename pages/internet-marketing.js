@@ -150,6 +150,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                               <Feature feature={tier.contentMarketing} />
                               <Feature feature={tier.uxAnalysis} />
                               <Feature feature={tier.cro} />
+                              <Feature feature={tier.extendedLandingPages} />
                               <Feature feature={tier.digitalPr} />
                               <Feature feature={tier.organicSocialMedia} />
                               <Feature feature={tier.paidSocialMedia} />
@@ -260,6 +261,7 @@ const HOMEPAGE_QUERY = `
       uxAnalysis
       cro
       digitalPr
+      extendedLandingPages
       organicSocialMedia
       paidSocialMedia
       graphicDesign
