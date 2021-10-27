@@ -152,9 +152,9 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                               <Feature feature={tier.cro} />
                               <Feature feature={tier.extendedLandingPages} />
                               <Feature feature={tier.digitalPr} />
+                              <Feature feature={tier.graphicDesign} />
                               <Feature feature={tier.organicSocialMedia} />
                               <Feature feature={tier.paidSocialMedia} />
-                              <Feature feature={tier.graphicDesign} />
                               <Feature feature={tier.photography} />
                               <Feature feature={tier.videography} />
                               <Feature feature={tier.animation} />
