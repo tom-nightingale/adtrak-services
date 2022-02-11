@@ -23,9 +23,9 @@ export default function Home({ data: {home, site} }) {
             {renderMetaTags(home.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
-        {session && (
+        {/* {session && (
           <Header navLinks={home.heroLinks} />
-        )}
+        )} */}
 
         <motion.div
           initial="initial"
@@ -39,7 +39,7 @@ export default function Home({ data: {home, site} }) {
               <Login />
             )}     
 
-            {session && (
+            {/* {session && (
               <Hero
                 index={true}
                 navLinks={home.heroLinks} 
@@ -50,7 +50,7 @@ export default function Home({ data: {home, site} }) {
                 heroTextColor="text-white"
                 heroLinks={home.heroLinks}
               />
-            )}
+            )} */}
 
           </motion.div>
 
@@ -74,33 +74,6 @@ const HOMEPAGE_QUERY = `
       heroImage {
         responsiveImage(imgixParams: {fm: png, w:1920, h:796, crop: entropy, fit: crop }) {
           ...responsiveImageFragment
-        }
-      }
-      heroLinks {
-        ... on HostingRecord {
-          pageTitle
-          heroTitle
-          slug
-        }
-        ... on InternetMarketingRecord {
-          pageTitle
-          heroTitle
-          slug
-        }
-        ... on PaidMarketingRecord {
-          pageTitle
-          heroTitle
-          slug
-        }
-        ... on WebDesignRecord {
-          pageTitle
-          heroTitle
-          slug
-        }
-        ... on SocialRecord {
-          pageTitle
-          heroTitle
-          slug
         }
       }
       seo: _seoMetaTags {
