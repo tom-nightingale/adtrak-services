@@ -70,7 +70,7 @@ export default function Header({ index, navLinks, heroImage, heroTitle, heroBlur
                 <div className="relative z-10 flex flex-wrap justify-center mt-8 lg:mt-20">
                   {heroLinks.map((item, i) => {
                     return(
-                      <div className="flex flex-wrap w-full p-4 sm:w-1/2 md:w-1/4" key={i}>
+                      <div className="flex flex-wrap w-full p-4 sm:w-1/2 md:w-1/5" key={i}>
                         <Link href={item.slug} scroll={false}>
                           <a className="flex flex-col justify-center w-full p-4 leading-snug text-center transition-all duration-500 bg-white rounded-2xl lg:text-lg sm:text-left 2xl:p-12 sm:p-8 xl:text-xl font-display text-secondary-dark hover:no-underline hover:text-primary">
                             <div className="lg:w-1/2">

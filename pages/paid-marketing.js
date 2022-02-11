@@ -99,7 +99,7 @@ export default function Home({ data: {home, paidMarketing, pmTiers, site} }) {
                         })}
                       </motion.ul>
 
-                      <div className="w-1/2">
+                      <div className="w-7/12">
 
                         <div className="flex flex-wrap w-full h-full">
 
@@ -114,7 +114,7 @@ export default function Home({ data: {home, paidMarketing, pmTiers, site} }) {
                                 animate="visible"
                                 variants={tierVariants}
                                 transition={{duration: .5, delay: 2.5}}
-                                className={`flex flex-col items-center leading-snug text-center bg-white border-l border-b border-gray-200 ${tier.mostPopular ? 'rounded-t-4xl mt-[-148px] lg:mt-[-173px] xl:mt-[-178px] 2xl:mt-[-188px]' : 'mt-[-16px] lg:mt-[-141px] xl:mt-[-146px] 2xl:mt-[-156px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 5 ? 'rounded-tr-4xl' : ''} `}>
+                                className={`flex flex-col items-center leading-snug text-center bg-white border-l border-b border-gray-200 ${tier.mostPopular ? 'rounded-t-4xl mt-[-148px] lg:mt-[-173px] xl:mt-[-178px] 2xl:mt-[-188px]' : 'mt-[-16px] lg:mt-[-141px] xl:mt-[-146px] 2xl:mt-[-156px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 2 ? 'rounded-tr-4xl' : ''} `}>
                                 
                                 <div className={`relative w-full py-6 ${tier.mostPopular ? 'pt-14' : ''} `}>
 
@@ -243,6 +243,11 @@ const HOMEPAGE_QUERY = `
           slug
         }
         ... on WebDesignRecord {
+          pageTitle
+          heroTitle
+          slug
+        }
+        ... on SocialRecord {
           pageTitle
           heroTitle
           slug

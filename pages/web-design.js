@@ -214,6 +214,11 @@ const HOMEPAGE_QUERY = `
           heroTitle
           slug
         }
+        ... on SocialRecord {
+          pageTitle
+          heroTitle
+          slug
+        }
       }
     }
     webDesign {

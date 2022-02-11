@@ -15,8 +15,7 @@ import Feature from "../components/feature";
 import MostPopular from "../components/most-popular";
 import { useSession } from 'next-auth/client';
 
-
-export default function Home({ data: {home, internetMarketing, imTiers, site} }) {
+export default function Home({ data: {home, social, socialTiers, site} }) {
 
   const [session, loading] = useSession();
 
@@ -29,14 +28,14 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
 
   function handleClose() {
     showModal(false);
-  }  
+  }
 
   return (
 
     <Layout>
 
         <Head>
-            {renderMetaTags(internetMarketing.seo.concat(site.faviconMetaTags))} 
+            {renderMetaTags(social.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
         {session && (
@@ -48,39 +47,41 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
           animate="enter"
           exit="exit"
         > 
-
+        
         <motion.div variants={fade}>
 
           {!session && (
             <Login />
-          )} 
+          )}
 
 
           {session && (
             <>
-              <Hero
-                navLinks={home.heroLinks} 
-                heroImage={internetMarketing.heroImage}
-                heroTitle={internetMarketing.heroTitle}
-                heroBlurb={internetMarketing.heroBlurb}
-                heroBgColor="bg-secondary"
-                heroGradientHex="59, 92, 196"
-                heroModifiers="pb-[320px]"
-              />        
 
-              <div className="w-full bg-white">
+            <Hero
+              navLinks={home.heroLinks} 
+              heroImage={social.heroImage}
+              heroTitle={social.heroTitle}
+              heroBlurb={social.heroBlurb}
+              heroBgColor="bg-primary"
+              heroTextColor="text-white"
+              heroGradientHex="255, 107, 74"
+              heroModifiers="pb-[320px]"
+            />  
 
-                <Container>
+            <div className="w-full bg-white">
+
+              <Container>
 
                   <div className="relative z-20 flex flex-wrap text-2xs hosting-options lg:text-base">
 
                     <motion.ul 
-                      className="relative w-1/4 option-list"
+                      className="relative w-5/12 option-list"
                       initial="hidden"
                       animate="visible"
                       variants={listVariants}
                     >
-                      {internetMarketing.features.map((option, i) => {
+                      {social.features.map((option, i) => {
                         return (
                           <motion.li variants={featureVariants} key={i}>
                             <span className="relative z-10">{option.title}</span>
@@ -92,14 +93,14 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                       })}
                     </motion.ul>
 
-                    <div className="w-3/4">
+                    <div className="w-7/12">
 
                       <div className="flex flex-wrap w-full h-full">
 
-                        {imTiers.map((tier, i) => {
+                        {socialTiers.map((tier, i) => {
                           return (
                             
-                          <div className="w-1/6" key={i}>
+                          <div className="w-1/3" key={i}>
 
                             <motion.div 
                               key={tier.title}
@@ -107,7 +108,7 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                               animate="visible"
                               variants={tierVariants}
                               transition={{duration: .5, delay: 2.5}}
-                              className={`flex flex-col items-center leading-snug text-center bg-white border-l border-b border-gray-200 ${tier.mostPopular ? 'rounded-t-4xl mt-[-161px] lg:mt-[-174px]' : 'mt-[-129px] lg:mt-[-142px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 5 ? 'rounded-tr-4xl' : ''} `}>
+                              className={`flex flex-col items-center leading-snug text-center bg-white border-l border-b border-gray-200 ${tier.mostPopular ? 'rounded-t-4xl mt-[-148px] lg:mt-[-173px] xl:mt-[-178px] 2xl:mt-[-188px]' : 'mt-[-126px] lg:mt-[-131px] xl:mt-[-142px] 2xl:mt-[-142px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i+1 === socialTiers.length ? 'rounded-tr-4xl' : ''} `}>
                               
                               <div className={`relative w-full py-6 ${tier.mostPopular ? 'pt-14' : ''} `}>
 
@@ -128,36 +129,22 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
                             
 
                             <motion.ul
-                              className={` ${i+1 <= imTiers.length ? 'border-l border-gray-200' : '' } ${i == 4 ? 'border-l-0' : '' } ${tier.mostPopular ? "shadow-xl rounded-3xl pb-4 text-xs relative z-40 border-l-0" : "text-xs"} overflow-hidden`}
+                              className={` ${i+1 <= socialTiers.length ? 'border-l border-gray-200' : '' } ${tier.mostPopular ? "shadow-xl rounded-3xl pb-4 text-xs relative z-40 border-l-0" : "text-xs"} overflow-hidden`}
                               initial="hidden"
                               animate="visible"
                               variants={listVariants}
                             >
 
-                              <Feature feature={tier.healthChecks} />
-                              <Feature feature={tier.analyticsAnalysis} />
-                              <Feature feature={tier.algorithmCompliance} />
-                              <Feature feature={tier.citationBuildingMaintenance} />
-                              <Feature feature={tier.googleMyBusiness} />
-                              <Feature feature={tier.quarterlyPerformanceReview} />
-                              <Feature feature={tier.rankTracking} text={true} />
-                              <Feature feature={tier.ongoingOptimisation} />
-                              <Feature feature={tier.backlinkProfileAnalysis} />
-                              <Feature feature={tier.advancedLinkBuilding} />
-                              <Feature feature={tier.articleManagement} />
-                              <Feature feature={tier.reviewsManagement} />
-                              <Feature feature={tier.siteSpeedManagement} />
-                              <Feature feature={tier.contentMarketing} />
-                              <Feature feature={tier.uxAnalysis} />
-                              <Feature feature={tier.cro} />
-                              <Feature feature={tier.extendedLandingPages} />
-                              <Feature feature={tier.digitalPr} />
-                              <Feature feature={tier.graphicDesign} />
-                              <Feature feature={tier.organicSocialMedia} />
-                              <Feature feature={tier.paidSocialMedia} />
-                              <Feature feature={tier.photography} />
-                              <Feature feature={tier.videography} />
-                              <Feature feature={tier.animation} />
+                              <Feature feature={tier.boostingBudgetForPromotedPosts} text={true}/>
+                              <Feature feature={tier.brandedGraphics} />
+                              <Feature feature={tier.communityEngagement} />
+                              <Feature feature={tier.inboxAutoResponding} />
+                              <Feature feature={tier.jobPostings} />    
+                              <Feature feature={tier.notificationMonitoring} />
+                              <Feature feature={tier.numberOfPosts} text={true}/>
+                              <Feature feature={tier.numberOfSocialMediaPlatforms} text={true}/>
+                              <Feature feature={tier.quarterlyReporting} />
+                              <Feature feature={tier.schedulingToolAccess} />
 
                             </motion.ul>
                             
@@ -171,23 +158,23 @@ export default function Home({ data: {home, internetMarketing, imTiers, site} })
 
                   </div>
 
-                </Container>
-                
-              </div>        
+                </Container>              
+              
+            </div>        
 
-              <Footer content={internetMarketing.disclaimer} />
+            <Footer content={social.disclaimer} />
 
-            </>
-            )}
+          </>
+          )}
 
-            </motion.div>
+        </motion.div>
 
-            <motion.div className={`modal fixed z-50 p-4 bg-primary text-white text-center transition-all duration-1000 bottom-0 left-0 w-full text-2xs ${modal ? 'opacity-full' : 'opacity-0'}`}>
-              <>
-                <button className="absolute top-4 right-4" onClick={() => handleClose()}>Close</button>
-                <p className="modal-content">...</p>
-              </>
-            </motion.div>       
+        <motion.div className={`modal fixed z-50 p-4 bg-primary text-white text-center transition-all duration-1000 bottom-0 left-0 w-full text-2xs ${modal ? 'opacity-full' : 'opacity-0'}`}>
+          <>
+            <button className="absolute top-4 right-4" onClick={() => handleClose()}>Close</button>
+            <p className="modal-content">...</p>
+          </>
+        </motion.div>
 
       </motion.div>
 
@@ -232,11 +219,11 @@ const HOMEPAGE_QUERY = `
         }
       }
     }
-    internetMarketing {
+    social {
       heroTitle
       heroBlurb
       heroImage {
-        responsiveImage(imgixParams: {fm: png, w:900, h:750, crop: entropy, fit: crop, blendMode: multiply}) {
+        responsiveImage(imgixParams: {fm: png, w:900, h:750, crop: entropy, fit: crop, blendMode: luminosity}) {
           ...responsiveImageFragment
         }
       }
@@ -249,35 +236,21 @@ const HOMEPAGE_QUERY = `
         ...metaTagsFragment
       }
     }
-    imTiers : allInternetMarketingTiers {
+    socialTiers : allSocialTiers {
       title
       price
-      mostPopular
       nickname
-      healthChecks
-      analyticsAnalysis
-      algorithmCompliance
-      citationBuildingMaintenance
-      googleMyBusiness
-      quarterlyPerformanceReview
-      rankTracking
-      ongoingOptimisation
-      backlinkProfileAnalysis
-      advancedLinkBuilding
-      articleManagement
-      reviewsManagement
-      siteSpeedManagement
-      contentMarketing
-      uxAnalysis
-      cro
-      digitalPr
-      extendedLandingPages
-      organicSocialMedia
-      paidSocialMedia
-      graphicDesign
-      photography
-      videography
-      animation
+      mostPopular
+      boostingBudgetForPromotedPosts
+      brandedGraphics
+      communityEngagement
+      inboxAutoResponding
+      jobPostings    
+      notificationMonitoring
+      numberOfPosts
+      numberOfSocialMediaPlatforms
+      quarterlyReporting
+      schedulingToolAccess
     }
   }
   ${metaTagsFragment}

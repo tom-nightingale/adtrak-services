@@ -1,9 +1,6 @@
 module.exports = {
   mode: 'jit',
-  purge: {
-      content: ['./pages/**/*.js', './components/**/*.js'],
-  },
-  darkMode: false, // or 'media' or 'class'
+  content: ['./pages/**/*.js', './components/**/*.js'],  
   theme: {
     screens: {
       "2xs": "375px",
@@ -119,8 +116,6 @@ module.exports = {
     textDecoration: ['group-hover', 'hover', 'focus', 'group-focus'],
   },
   plugins: [
-    require("tailwindcss-filters"),
-    require('@tailwindcss/forms'),
   ],
   corePlugins: {
     container: false,

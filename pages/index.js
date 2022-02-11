@@ -97,6 +97,11 @@ const HOMEPAGE_QUERY = `
           heroTitle
           slug
         }
+        ... on SocialRecord {
+          pageTitle
+          heroTitle
+          slug
+        }
       }
       seo: _seoMetaTags {
         ...metaTagsFragment
