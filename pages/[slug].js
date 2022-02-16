@@ -16,7 +16,9 @@ import Feature from "../components/feature";
 import MostPopular from "../components/most-popular";
 import { useSession } from 'next-auth/client';
 
-export default function Page ({ data : { site, page } }) {
+export default function Page ({ data : { site, page, home } }) {
+
+    console.log(page.features);
 
     const [session, loading] = useSession();
 
@@ -30,7 +32,6 @@ export default function Page ({ data : { site, page } }) {
     function handleClose() {
         showModal(false);
     }  
-
     
     return(
         <Layout>
@@ -39,9 +40,9 @@ export default function Page ({ data : { site, page } }) {
             {renderMetaTags(page.seo.concat(site.faviconMetaTags))} 
         </Head>  
 
-        {/* {session && (
+        {session && (
           <Header navLinks={home.heroLinks} />
-        )} */}
+        )}
 
         <motion.div
           initial="initial"
@@ -58,15 +59,15 @@ export default function Page ({ data : { site, page } }) {
 
           {session && (
             <>
-              {/* <Hero
+              <Hero
                 navLinks={home.heroLinks} 
-                heroImage={internetMarketing.heroImage}
-                heroTitle={internetMarketing.heroTitle}
-                heroBlurb={internetMarketing.heroBlurb}
+                heroImage={page.heroImage}
+                heroTitle={page.heroTitle}
+                heroBlurb={page.heroBlurb}
                 heroBgColor="bg-secondary"
                 heroGradientHex="59, 92, 196"
                 heroModifiers="pb-[320px]"
-              />         */}
+              />        
 
               <div className="w-full bg-white">
 
@@ -75,12 +76,12 @@ export default function Page ({ data : { site, page } }) {
                   <div className="relative z-20 flex flex-wrap text-2xs hosting-options lg:text-base">
 
                     <motion.ul 
-                      className="relative w-1/4 option-list"
+                      className="relative w-5/12 option-list"
                       initial="hidden"
                       animate="visible"
                       variants={listVariants}
                     >
-                      {/* {internetMarketing.features.map((option, i) => {
+                      {page.features.map((option, i) => {
                         return (
                           <motion.li variants={featureVariants} key={i}>
                             <span className="relative z-10">{option.title}</span>
@@ -89,17 +90,17 @@ export default function Page ({ data : { site, page } }) {
                             </button>
                           </motion.li>
                         )
-                      })} */}
+                      })}
                     </motion.ul>
 
-                    <div className="w-3/4">
+                    <div className="w-7/12">
 
                       <div className="flex flex-wrap w-full h-full">
 
-                        {/* {imTiers.map((tier, i) => {
+                        {page.linkedTiers.map((tier, i) => {
                           return (
                             
-                          <div className="w-1/6" key={i}>
+                          <div className="w-1/3" key={i}> {/* to do...replace with switch statement for width classnames */}
 
                             <motion.div 
                               key={tier.title}
@@ -107,34 +108,31 @@ export default function Page ({ data : { site, page } }) {
                               animate="visible"
                               variants={tierVariants}
                               transition={{duration: .5, delay: 2.5}}
-                              className={`flex flex-col items-center leading-snug text-center bg-white border-l border-b border-gray-200 ${tier.mostPopular ? 'rounded-t-4xl mt-[-161px] lg:mt-[-174px]' : 'mt-[-129px] lg:mt-[-142px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i == 5 ? 'rounded-tr-4xl' : ''} `}>
+                              className={`flex flex-col items-center leading-snug text-center bg-white border-l border-b border-gray-200 ${tier.mostPopular ? 'rounded-t-4xl mt-[-161px] lg:mt-[-174px]' : 'mt-[-129px] lg:mt-[-142px]'} text-secondary-dark ${i == 0 ? 'rounded-tl-4xl' : '' } ${i+1 == page.linkedTiers.length ? 'rounded-tr-4xl' : ''} `}>
                               
-                              <div className={`relative w-full py-6 ${tier.mostPopular ? 'pt-14' : ''} `}>
-
-                                {tier.mostPopular &&
-                                  <MostPopular />
-                                }
-                              
+                              <div className="relative w-full py-6">
                                 <p className="px-2 leading-tight text-center xs:px-8">
                                   <span className="text-xs font-semibold opacity-50 xl:text-lg font-display">{tier.title}</span>
                                 </p>
-                                <p className="flex flex-col mt-4 leading-tight">
-                                  <span className="text-lg font-semibold leading-none xl:text-xl font-display">£{tier.price}</span>
-                                  <span className="font-light opacity-50 text-2xs">{tier.nickname}</span>
+                                <p className="flex flex-col leading-tight">
+                                  <span className="py-2 text-lg font-semibold leading-none xl:text-xl font-display">{tier.price}</span>
+                                  {tier.nickname &&
+                                    <span className="font-light opacity-50 text-2xs">{tier.nickname}</span>
+                                  }
                                 </p>
                               </div>
                               
                             </motion.div>
                             
 
-                            <motion.ul
-                              className={` ${i+1 <= imTiers.length ? 'border-l border-gray-200' : '' } ${i == 4 ? 'border-l-0' : '' } ${tier.mostPopular ? "shadow-xl rounded-3xl pb-4 text-xs relative z-40 border-l-0" : "text-xs"} overflow-hidden`}
+                             <motion.ul
+                              className={` ${i+1 <= page.linkedTiers.length ? 'border-l border-gray-200' : '' } ${i === page.linkedTiers.length ? 'border-l-0' : '' } ${tier.mostPopular ? "shadow-xl rounded-3xl pb-4 text-xs relative z-40 border-l-0" : "text-xs"} overflow-hidden`}
                               initial="hidden"
                               animate="visible"
                               variants={listVariants}
                             >
 
-                              <Feature feature={tier.healthChecks} />
+                              {/* <Feature feature={tier.healthChecks} />
                               <Feature feature={tier.analyticsAnalysis} />
                               <Feature feature={tier.algorithmCompliance} />
                               <Feature feature={tier.citationBuildingMaintenance} />
@@ -157,13 +155,15 @@ export default function Page ({ data : { site, page } }) {
                               <Feature feature={tier.paidSocialMedia} />
                               <Feature feature={tier.photography} />
                               <Feature feature={tier.videography} />
-                              <Feature feature={tier.animation} />
+                              <Feature feature={tier.animation} /> */}
 
-                            </motion.ul>
+                            </motion.ul> 
                             
                           </div>
                           )
-                        })} */}
+                        })}
+
+                        
 
                       </div>
 
@@ -214,10 +214,48 @@ const QUERY = `
                 title
                 description
             }
+            linkedTiers {
+              ... on HostingOptionRecord {
+                title
+                mostPopular
+                price
+                nickname
+              }
+              ... on InternetMarketingTierRecord {
+                title
+                mostPopular
+                price
+                nickname
+              }
+              ... on PaidMarketingTierRecord {
+                title
+                mostPopular
+                price
+                nickname
+              }
+              ... on SocialTierRecord {
+                title
+                mostPopular
+                price
+                nickname
+              }
+              ... on WebDesignTierRecord {
+                title
+                mostPopular
+                price
+                nickname
+              }
+            }
             disclaimer
             seo: _seoMetaTags {
                 ...metaTagsFragment
             }
+        }
+        home {
+          heroLinks {
+            slug
+            pageTitle
+          }
         }
         
     }
