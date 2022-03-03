@@ -46,16 +46,15 @@ export default function Page ({ data : { site, page, home } }) {
     // const [randomNumber, setRandomNumber] = useState(0);
     const [heroContext, setHeroContext] = useContext(HeroContext);
     
+    function getRandomNumber(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+        
     useEffect(() => {
       router.events.on('routeChangeComplete', () => {
-        function getRandomNumber(min, max) {
-          return Math.random() * (max - min) + min;
-        }
         setHeroContext(Math.floor(getRandomNumber(0, 3)));
       })
-    }, [])
-
-    console.log(heroContext);
+    }, []);
 
     const [session, loading] = useSession();
     const [modal, showModal] = useState(false);
