@@ -1,12 +1,15 @@
-import { useEffect, React } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/main.css'
 import { AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
+import { HeroContext } from '../context/HeroContext'
 import { Provider } from 'next-auth/client';
 
 export default function App({ Component, pageProps }) {
     const { session } = pageProps;
     const router = useRouter();
+
+    const [heroContext, setHeroContext] = useState(0);
 
     useEffect(() => {
         const handleRouteChange = (url) => { 
@@ -22,11 +25,11 @@ export default function App({ Component, pageProps }) {
 
     return (
         <Provider session={session}>
-
-            <AnimatePresence exitBeforeEnter>
-                <Component {...pageProps} key={router.asPath} />
-            </AnimatePresence>
-            
+            <HeroContext.Provider value={[heroContext, setHeroContext]}>
+                <AnimatePresence exitBeforeEnter>
+                    <Component {...pageProps} key={router.asPath} />
+                </AnimatePresence>
+            </HeroContext.Provider>            
         </Provider>
     )
 }

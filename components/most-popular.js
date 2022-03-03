@@ -4,7 +4,6 @@ export default function mostPopular({  }) {
 
     const router = useRouter();
     const currentLink = router.asPath.replace('/', '');
-    console.log(currentLink)
 
     return (
         <p className={`absolute flex flex-wrap items-center justify-center px-4 py-2 font-light text-center transform -translate-x-1/2 rounded-full  max-w-40 -top-8 left-1/2 text-2xs bg-secondary-light text-secondary-dark ${currentLink !== "internet-marketing" ? 'xl:w-4/5' : ''}`}>

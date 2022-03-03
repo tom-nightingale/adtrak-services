@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head'
 import { request } from "../lib/datocms";
 import { renderMetaTags } from "react-datocms";
@@ -15,8 +16,11 @@ import { m, motion } from 'framer-motion'
 import Feature from "../components/feature";
 import MostPopular from "../components/most-popular";
 import { useSession } from 'next-auth/client';
+import { HeroContext } from '../context/HeroContext'
 
 export default function Page ({ data : { site, page, home } }) {
+
+    const router = useRouter();
 
     const heroColours = [
       {
@@ -38,11 +42,20 @@ export default function Page ({ data : { site, page, home } }) {
         "mostPopularColor": "bg-secondary border-secondary"
       }      
     ];
+
+    // const [randomNumber, setRandomNumber] = useState(0);
+    const [heroContext, setHeroContext] = useContext(HeroContext);
     
-    function getRandomNumber(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-    let randomNumber = Math.floor(getRandomNumber(0, 3));
+    useEffect(() => {
+      router.events.on('routeChangeComplete', () => {
+        function getRandomNumber(min, max) {
+          return Math.random() * (max - min) + min;
+        }
+        setHeroContext(Math.floor(getRandomNumber(0, 3)));
+      })
+    }, [])
+
+    console.log(heroContext);
 
     const [session, loading] = useSession();
     const [modal, showModal] = useState(false);
@@ -87,9 +100,9 @@ export default function Page ({ data : { site, page, home } }) {
                 heroImage={page.heroImage}
                 heroTitle={page.heroTitle}
                 heroBlurb={page.heroBlurb}
-                heroTextColor={heroColours[randomNumber].textColor}
-                heroBgColor={heroColours[randomNumber].bgColor}
-                heroGradientHex={heroColours[randomNumber].hexColor}
+                heroTextColor={heroColours[heroContext].textColor}
+                heroBgColor={heroColours[heroContext].bgColor}
+                heroGradientHex={heroColours[heroContext].hexColor}
                 heroModifiers="pb-[320px]"
               />        
 
@@ -165,7 +178,7 @@ export default function Page ({ data : { site, page, home } }) {
                               animate="visible"
                               variants={tierVariants}
                               transition={{duration: .5, delay: 2.5}}
-                              className={`flex flex-col items-center leading-snug text-center border-l border-b  ${tier.mostPopular ? `rounded-t-4xl mt-[-141px] lg:mt-[-163px] xl:mt-[-169px] py-4 ${heroColours[randomNumber].mostPopularColor} text-white` : 'mt-[-109px] lg:mt-[-131px] xl:mt-[-137px] bg-white text-secondary-dark border-gray-200'} ${i == 0 ? 'rounded-tl-4xl' : '' } ${i+1 == page.linkedTiers.length ? 'rounded-tr-4xl' : ''} `}>
+                              className={`flex flex-col items-center leading-snug text-center border-l border-b  ${tier.mostPopular ? `rounded-t-4xl mt-[-141px] lg:mt-[-163px] xl:mt-[-169px] py-4 ${heroColours[heroContext].mostPopularColor} text-white` : 'mt-[-109px] lg:mt-[-131px] xl:mt-[-137px] bg-white text-secondary-dark border-gray-200'} ${i == 0 ? 'rounded-tl-4xl' : '' } ${i+1 == page.linkedTiers.length ? 'rounded-tr-4xl' : ''} `}>
                               
                               <div className="relative w-full py-6">
                                 
