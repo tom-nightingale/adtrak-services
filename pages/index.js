@@ -10,7 +10,6 @@ import { motion } from "framer-motion"
 import { fade } from "../lib/transitionHelpers"
 import { useSession } from 'next-auth/client';
 
-
 export default function Home({ data: {home, site} }) {
 
   const [session, loading] = useSession();

@@ -42,10 +42,7 @@ export default function Page ({ data : { site, page, home } }) {
     function getRandomNumber(min, max) {
       return Math.random() * (max - min) + min;
     }
-
     let randomNumber = Math.floor(getRandomNumber(0, 3));
-    // console.log(heroColours[randomNumber]);
-
 
     const [session, loading] = useSession();
     const [modal, showModal] = useState(false);
@@ -168,9 +165,14 @@ export default function Page ({ data : { site, page, home } }) {
                               animate="visible"
                               variants={tierVariants}
                               transition={{duration: .5, delay: 2.5}}
-                              className={`flex flex-col items-center leading-snug text-center border-l border-b  ${tier.mostPopular ? `rounded-t-4xl mt-[-141px] lg:mt-[-181px] xl:mt-[-169px] py-4 ${heroColours[randomNumber].mostPopularColor} text-white` : 'mt-[-109px] lg:mt-[-131px] xl:mt-[-137px] bg-white text-secondary-dark border-gray-200'} ${i == 0 ? 'rounded-tl-4xl' : '' } ${i+1 == page.linkedTiers.length ? 'rounded-tr-4xl' : ''} `}>
+                              className={`flex flex-col items-center leading-snug text-center border-l border-b  ${tier.mostPopular ? `rounded-t-4xl mt-[-141px] lg:mt-[-163px] xl:mt-[-169px] py-4 ${heroColours[randomNumber].mostPopularColor} text-white` : 'mt-[-109px] lg:mt-[-131px] xl:mt-[-137px] bg-white text-secondary-dark border-gray-200'} ${i == 0 ? 'rounded-tl-4xl' : '' } ${i+1 == page.linkedTiers.length ? 'rounded-tr-4xl' : ''} `}>
                               
                               <div className="relative w-full py-6">
+                                
+                                {tier.mostPopular &&
+                                  <MostPopular />
+                                }
+                                
                                 <p className="px-2 leading-tight text-center">
                                   <span className="text-xs font-semibold opacity-50 font-display">{tier.title}</span>
                                 </p>
@@ -387,6 +389,24 @@ const QUERY = `
                 advancedFeaturesIntegrations
                 socialMediaIntegration
                 secureOnlinePayments
+              }
+              ... on PaidSocialTierRecord {
+                title
+                mostPopular
+                price
+                nickname
+                numberOfSocialMediaPlatforms
+                recommendedAdSpend
+                campaigns
+                performanceMonitoring
+                performanceAnalysis
+                quarterlyReporting
+                adSplitTesting
+                remarketingAdvertising
+                lookalikeAudiences
+                jobPostings
+                shoppableAds
+                sequentialAdvertising
               }
             }
             disclaimer

@@ -6,7 +6,6 @@ export default function header({ navLinks }) {
 
     const router = useRouter();
     const currentLink = router.asPath.replace('/', '');
-    // console.log(router);
     
     return (
         <div className="absolute top-0 z-20 w-full pt-12">
@@ -20,7 +19,7 @@ export default function header({ navLinks }) {
                     </a>
                 </Link>
 
-                <div className="hidden lg:block">
+                <div className="hidden xl:block">
                     {navLinks.map((link, i) => {
                     return(
                         <Link key={i} href={link.slug} scroll={false}>
